@@ -207,6 +207,10 @@ a{color:var(--aqua-light)}
   font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--aqua-light);
 }
 .placeholder p{font-size:clamp(16px,1.3vw,18px);line-height:1.75;color:var(--cream-dim)}
+.bio-body{display:flex;flex-direction:column;gap:20px;max-width:64ch}
+.bio-body p{font-size:clamp(16px,1.2vw,17.5px);line-height:1.78;color:var(--cream)}
+.bio-body p.lead{font-size:clamp(17px,1.45vw,20px);line-height:1.62;color:var(--gold-light)}
+.bio-body em{font-style:italic}
 
 .stages{padding-block:clamp(64px,10vw,140px);border-top:var(--rule)}
 .stages .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(36px,5.5vw,80px);margin-top:clamp(36px,5vw,64px)}
@@ -484,10 +488,18 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
         <h1>About</h1>
         <p class="stand">One foot on the stage. One foot in the boardroom.</p>
         <hr class="hair">
-        <!-- TODO: drop in the condensed biography she attached on 28 September. -->
-        <div class="placeholder">
-          <div class="meta"><span>Placeholder &middot; condensed biography</span><span>sent 28 Sep, not yet received</span></div>
-          <p>[ Prof. Wilkerson&rsquo;s condensed biography goes here. She attached it to her email of 28 September; the file has not reached the build yet. Nothing has been invented in its place. ]</p>
+        <!-- Biography supplied by Prof. Wilkerson, 28 September. Her words.
+             Two double hyphens and one en dash normalised to commas; "Gershwin's"
+             corrected to "Gershwins'" to match the show title used elsewhere. -->
+        <div class="bio-body">
+          <p class="lead">From corporate America to the arts to academia, Lisa Nicole Wilkerson has excelled in the storytelling industry at the highest levels. She is an award-winning Broadway actor, voiceover artist on an Emmy-nominated series, professor, speaker, and communication skills leadership and acting career coach. She bundled her extensive experience to found Broadway Confidence<span class="reg">&reg;</span> Coaching &amp; Consulting, a service that integrates executive communication strategies with &ldquo;Broadway basics<span class="tm">&trade;</span>&rdquo;, performing arts tools and tactics, to support leaders with enhancing their professional presence.</p>
+          <p>As a New York University Stern School of Business adjunct professor, Lisa coaches Executive Education participants, teaches strategic communication skills to MBAs and undergraduates, and serves as an actor-communication skills coach for EMBAs and MBAs in the Leadership Accelerator program.</p>
+          <p>Other schools that have sought Lisa&rsquo;s expertise include Columbia University&rsquo;s School of International and Public Affairs, The Wharton School of Business at University of Pennsylvania, and Northwestern University&rsquo;s Medill School of Journalism, her alma mater.</p>
+          <p>Lisa&rsquo;s clients span journalism, law, medicine, business, and the arts, and select corporate clients include Downing Capital Group, Holistic Index, Tokio Marine North America Services, and Council for Urban Professionals (CUP).</p>
+          <p>Lisa&rsquo;s speaking philosophy centers on her signature slogan: &ldquo;Everything You Need You Already Have, and Everything You Have Is Good Enough<span class="tm">&trade;</span>.&rdquo; She shares actionable methods and personal stories to inspire professionals and youth across business, the arts, sports, and not-for-profits, with a mission to empower and motivate.</p>
+          <p>Prior to academia, Lisa worked in consumer marketing PR at Burson-Marsteller. While performing on Broadway, she co-founded Broadway in South Africa, a not-for-profit that fostered cross-cultural exchange between South African youth and Broadway artists using their talents for change.</p>
+          <p>Lisa&rsquo;s Broadway and national tour credits include <em>The Lion King</em> (Nala), <em>Motown: The Musical</em> (Anna Gordy, ensemble), <em>Mamma Mia!</em> (Ali), and Tony-awarded <em>The Gershwins&rsquo; Porgy and Bess</em> (dance and fight captain), for which she won the Fred and Adele Astaire Award for Outstanding Female Dancer in a Broadway show. Her voiceover work includes the Emmy-nominated PBS American Masters <em>UNLADYLIKE 2020</em> docuseries. She can be seen in Netflix&rsquo;s <em>Russian Doll</em>, and additional select voiceover credits include the <em>Aristocracy of Skin</em> documentary and ad campaigns for American Heart Association, AT&amp;T, Blue Cross Blue Shield, Ford Motor Company, Pantene, and Stop n Shop.</p>
+          <p>Lisa Nicole Wilkerson&rsquo;s dynamic career, spanning Broadway, broadcast, business, and academia, reflects her unwavering commitment to storytelling, education, and empowering others to reach their fullest potential.</p>
         </div>
       </div>
     </section>
@@ -640,6 +652,8 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
     "Council for Urban Professionals",
     "Tokio Marine North America",
     "Convergent",
+    "Downing Capital Group",
+    "Holistic Index",
     "Broadway Inspirational Voices",
     "The Performing Arts Project",
     "Ekhaya Multi Arts Center, Durban",
