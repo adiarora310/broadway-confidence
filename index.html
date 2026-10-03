@@ -32,6 +32,9 @@
 }
 
 *{box-sizing:border-box}
+/* Class selectors that set `display` outbid the browser's own [hidden] rule,
+   so state toggled with el.hidden needs this to actually hide. */
+[hidden]{display:none !important}
 body{
   margin:0;background:var(--ground);color:var(--cream);
   font-family:var(--body);font-size:17px;line-height:1.6;
