@@ -5,22 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Career enhancing leadership and communication coaching from Lisa Nicole Wilkerson, the bridge between Broadway and the boardroom.">
-<meta name="theme-color" content="#0B0B0C">
+<meta name="theme-color" content="#0A1A3C">
 <title>Broadway Confidence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Karla:wght@400;500;700&display=swap">
 <style>
 :root{
-  --ink:#0B0B0C;
-  --ink-2:#141312;
+  --ground:#0A1A3C;
+  --panel:#112A52;
+  --ebony:#12100E;
   --gold-deep:#9C7A24;
   --gold:#C9A227;
   --gold-light:#E8CE87;
+  --aqua:#2FC7B6;
+  --aqua-light:#7FE6D8;
   --cream:#F4EFE4;
-  --cream-dim:#BDB5A6;
+  --cream-dim:#B9C5DA;
   --red:#B0122C;
-  --field-line:#3A342A;
+  --field-line:#2A4A7A;
   --display:"Bodoni Moda",Didot,"Bodoni MT",Georgia,serif;
   --body:Karla,"Helvetica Neue",Arial,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
@@ -30,23 +33,20 @@
 
 *{box-sizing:border-box}
 body{
-  margin:0;
-  background:var(--ink);
-  color:var(--cream);
-  font-family:var(--body);
-  font-size:17px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  margin:0;background:var(--ground);color:var(--cream);
+  font-family:var(--body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
 ::selection{background:var(--red);color:#FFFFFF}
 img{max-width:100%;display:block}
 h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;text-wrap:balance}
 p{margin:0;text-wrap:pretty}
-a{color:var(--gold-light)}
-:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px}
+a{color:var(--aqua-light)}
+:focus-visible{outline:2px solid var(--aqua);outline-offset:3px}
 
 .wrap{max-width:1440px;margin:0 auto;padding-inline:var(--gutter)}
+.reg{font-size:.5em;vertical-align:top;position:relative;top:-.15em;margin-left:5px;letter-spacing:0;color:var(--gold)}
+.tm{font-size:.3em;vertical-align:top;position:relative;top:.5em;margin-left:4px;letter-spacing:0}
 
 /* ---------- header ---------- */
 .masthead{border-bottom:var(--rule)}
@@ -65,17 +65,16 @@ a{color:var(--gold-light)}
   color:var(--cream);text-decoration:none;padding:14px 0;
   border-bottom:1px solid transparent;transition:color .2s,border-color .2s;
 }
-.nav a:hover{color:var(--gold-light)}
-.nav a[aria-current="page"]{color:var(--gold-light);border-bottom-color:var(--gold)}
+.nav a:hover{color:var(--aqua-light)}
+.nav a[aria-current="page"]{color:var(--aqua);border-bottom-color:var(--aqua)}
 
 .menu-btn{
   display:none;min-width:70px;min-height:44px;background:transparent;
-  border:1px solid var(--gold-deep);color:var(--gold-light);
+  border:1px solid var(--aqua);color:var(--aqua-light);
   font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.24em;
   text-transform:uppercase;cursor:pointer;
 }
-.menu-btn:hover{border-color:var(--gold-light)}
-.drawer{display:none;border-bottom:var(--rule);background:var(--ink-2)}
+.drawer{display:none;border-bottom:var(--rule);background:var(--panel)}
 .drawer nav{max-width:1440px;margin:0 auto;padding:4px var(--gutter) 18px;display:flex;flex-direction:column}
 .drawer a{
   min-height:60px;display:flex;align-items:center;
@@ -83,125 +82,107 @@ a{color:var(--gold-light)}
   font-family:var(--display);font-size:26px;color:var(--cream);text-decoration:none;
 }
 .drawer a:last-child{border-bottom:none}
-.drawer a[aria-current="page"]{color:var(--gold-light)}
+.drawer a[aria-current="page"]{color:var(--aqua-light)}
 
 /* ---------- shared devices ---------- */
 .act{
   display:flex;align-items:baseline;gap:20px;
   font-size:clamp(11px,1vw,12px);font-weight:700;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--gold);
+  text-transform:uppercase;color:var(--aqua);
 }
-.act .line{flex:1;height:1px;background:var(--gold-deep);opacity:.5}
+.act .line{flex:1;height:1px;background:var(--gold-deep);opacity:.6}
 .eyebrow{
   font-size:clamp(11px,1vw,12px);font-weight:700;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--gold);
+  text-transform:uppercase;color:var(--aqua);
 }
 .hair{width:64px;height:1px;background:var(--gold);border:0;margin:0}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
-  min-height:58px;padding:0 36px;background:var(--gold);color:var(--ink);
+  min-height:58px;padding:0 36px;background:var(--gold);color:var(--ground);
   font-family:var(--body);font-size:13px;font-weight:700;letter-spacing:.22em;
   text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;
   transition:background .2s,color .2s;
 }
-.btn:hover,.btn:focus-visible{background:#FFFFFF;color:var(--ink)}
+.btn:hover,.btn:focus-visible{background:var(--aqua);color:var(--ground)}
 .btn-quiet{
   display:inline-flex;align-items:center;justify-content:center;
   min-height:48px;padding:0 24px;background:transparent;
-  border:1px solid var(--gold-deep);color:var(--gold-light);
+  border:1px solid var(--aqua);color:var(--aqua-light);
   font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.22em;
-  text-transform:uppercase;cursor:pointer;transition:border-color .2s;
+  text-transform:uppercase;cursor:pointer;transition:border-color .2s,color .2s;
 }
-.btn-quiet:hover{border-color:var(--gold-light)}
+.btn-quiet:hover{border-color:var(--aqua-light);color:#FFFFFF}
 
-/* duotone image treatment */
-.duo{position:relative;overflow:hidden;background:var(--ink-2)}
-.duo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.85)}
-.duo::after,.duo .tint{content:"";position:absolute;inset:0;pointer-events:none}
-.duo .tint{mix-blend-mode:color;background:var(--gold-deep)}
-.duo.red .tint{background:var(--red)}
-.duo::after{background:var(--ink);opacity:.3}
-
-/* gold frame around a full-colour photograph */
-.framed{border:1px solid var(--gold);padding:10px;background:var(--ink)}
+.framed{border:1px solid var(--gold);padding:10px;background:var(--ground)}
 .framed .plate{position:relative;width:100%;height:100%;overflow:hidden}
 .framed .plate img{width:100%;height:100%;object-fit:cover;filter:contrast(1.04) saturate(1.04)}
-.framed .veil{
-  position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 76% 68% at 50% 40%,rgba(11,11,12,0) 45%,rgba(11,11,12,.42) 100%);
-}
 
-/* marquee bulbs */
-.bulbs{
-  height:44px;border-top:var(--rule);
-  background-image:
-    radial-gradient(circle,var(--gold-light) 3px,rgba(0,0,0,0) 3.6px),
-    radial-gradient(circle,var(--gold-deep) 3px,rgba(0,0,0,0) 3.6px);
-  background-size:44px 44px,44px 44px;
-  background-position:0 center,22px center;
-  background-repeat:repeat-x;
-}
-
-/* ---------- home hero ---------- */
+/* ---------- the bridge, made literal ---------- */
 .hero{
   border-bottom:var(--rule);
-  background:radial-gradient(ellipse 34% 62% at 73% -6%,rgba(232,206,135,.17),rgba(232,206,135,.05) 55%,rgba(11,11,12,0) 82%),var(--ink);
+  background:
+    radial-gradient(ellipse 42% 60% at 78% 4%,rgba(47,199,182,.16),rgba(10,26,60,0) 72%),
+    radial-gradient(ellipse 34% 50% at 12% 10%,rgba(201,162,39,.12),rgba(10,26,60,0) 70%),
+    var(--ground);
 }
 .hero-in{
-  max-width:1440px;margin:0 auto;padding:clamp(48px,7vw,110px) var(--gutter) 0;
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
-  gap:clamp(32px,5vw,72px);align-items:center;
+  max-width:1440px;margin:0 auto;padding:clamp(48px,7vw,96px) var(--gutter) 0;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,700px);
+  gap:clamp(32px,5vw,64px);align-items:center;
 }
-.hero-copy{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,36px);max-width:580px}
-.hero-copy h1{
-  font-size:clamp(2.45rem,5.1vw,4.625rem);line-height:1.02;letter-spacing:-.01em;color:#FFFFFF;
-}
+.hero-copy{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,34px);max-width:560px;padding-bottom:clamp(40px,6vw,96px)}
+.hero-copy h1{font-size:clamp(2.45rem,5.1vw,4.625rem);line-height:1.02;letter-spacing:-.01em;color:#FFFFFF}
 .hero-copy h1 em{font-style:italic;color:var(--gold-light)}
-.tm{font-size:.3em;vertical-align:top;position:relative;top:.5em;margin-left:4px;letter-spacing:0}
-.hero-copy .lede{font-size:clamp(17px,1.5vw,20px);max-width:480px}
+.hero-copy .lede{font-size:clamp(17px,1.5vw,20px);max-width:490px}
 .hero-copy .btn{align-self:flex-start}
 
-.hero-art{position:relative;aspect-ratio:660/760;width:100%;margin-top:clamp(28px,3vw,0px)}
-.hero-art .t1{position:absolute;left:0;top:15.8%;width:34.8%;height:68.4%}
-.hero-art .t2{position:absolute;right:0;top:26.3%;width:28.8%;height:60.5%}
-.hero-art .lisa{position:absolute;left:22.7%;top:0;width:62.2%;height:94.8%}
+.bridge{position:relative;width:100%;aspect-ratio:700/820;margin-top:clamp(24px,3vw,0px)}
+.bridge .figure{position:absolute;left:50%;transform:translateX(-50%);top:0;width:47.1%;height:85.9%;z-index:1}
+.bridge .wing{
+  position:absolute;bottom:0;width:40.9%;height:26.1%;
+  overflow:hidden;background:var(--ebony);z-index:2;
+}
+.bridge .wing img{width:100%;height:100%;object-fit:cover}
+.bridge .wing.left{left:0;border:1px solid var(--gold)}
+.bridge .wing.right{right:0;border:1px solid var(--aqua)}
+.wing-label{
+  position:absolute;bottom:calc(26.1% + 14px);width:40.9%;text-align:center;z-index:2;
+  font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
+}
+.wing-label.left{left:0;color:var(--gold-light)}
+.wing-label.right{right:0;color:var(--aqua-light)}
 
 /* ---------- offerings ---------- */
-.offerings{padding-block:clamp(64px,10vw,150px)}
-.offerings .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(36px,5vw,64px)}
-.offering{display:flex;flex-direction:column;gap:20px;padding:8px 48px 0 0}
-.offering+.offering{border-left:var(--rule);padding-inline:48px 48px}
-.offering:last-child{padding-right:0}
-.numeral{font-family:var(--display);font-style:italic;font-size:44px;line-height:1;color:var(--gold)}
-.offering h3{font-size:clamp(1.65rem,2.5vw,2.25rem);line-height:1.1;color:#FFFFFF}
-.offering p{font-size:clamp(16px,1.3vw,18px);line-height:1.7}
+.offerings{padding-block:clamp(64px,10vw,140px)}
+.offerings .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(36px,5vw,64px)}
+.offering{display:flex;flex-direction:column;gap:18px;padding:8px 36px 0 0}
+.offering+.offering{border-left:var(--rule);padding-inline:36px}
+.offering:last-child{padding-right:0;border-left-color:var(--aqua)}
+.numeral{font-family:var(--display);font-style:italic;font-size:42px;line-height:1;color:var(--gold)}
+.offering:last-child .numeral{color:var(--aqua)}
+.offering h3{font-size:clamp(1.5rem,2.1vw,1.875rem);line-height:1.1;color:#FFFFFF}
+.offering p{font-size:clamp(16px,1.2vw,17px);line-height:1.7}
+.offering .stat{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--aqua-light)}
 
-/* ---------- selected rooms ---------- */
-.rooms{
-  background:var(--ink-2);border-top:var(--rule);border-bottom:var(--rule);
-  padding-block:clamp(56px,8vw,120px);
-}
+/* ---------- selected rooms (black as accent) ---------- */
+.rooms{background:var(--ebony);border-top:var(--rule);border-bottom:var(--rule);padding-block:clamp(56px,8vw,120px)}
 .rooms .wrap{display:grid;grid-template-columns:320px minmax(0,1fr);gap:clamp(32px,5vw,64px)}
 .rooms h2{font-weight:400;font-style:italic;font-size:clamp(2rem,3.2vw,2.75rem);line-height:1.05;color:#FFFFFF}
 .rooms .head{display:flex;flex-direction:column;gap:16px}
-.rooms ul{
-  list-style:none;margin:0;padding:8px 0 0;
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 44px;
-}
+.rooms ul{list-style:none;margin:0;padding:8px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 44px}
 .rooms li{
   font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
-  line-height:1.6;color:var(--gold);padding-top:14px;
-  border-top:1px solid rgba(156,122,36,.35);
+  line-height:1.6;color:var(--gold-light);padding-top:14px;border-top:1px solid rgba(201,162,39,.4);
 }
 
 /* ---------- framed call to action ---------- */
 .curtain{padding-block:clamp(64px,10vw,140px)}
 .curtain .outer{border:var(--rule);padding:10px}
 .curtain .inner{
-  border:1px solid rgba(201,162,39,.45);
+  border:1px solid rgba(47,199,182,.5);
   padding:clamp(48px,8vw,120px) clamp(20px,4vw,64px);
   display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center;
-  background:radial-gradient(ellipse 40% 80% at 50% 0%,rgba(232,206,135,.10),rgba(11,11,12,0) 75%);
+  background:radial-gradient(ellipse 44% 84% at 50% 0%,rgba(47,199,182,.14),rgba(10,26,60,0) 74%);
 }
 .curtain h2{font-size:clamp(2.4rem,6vw,5.25rem);line-height:1;color:#FFFFFF}
 .curtain p{font-size:clamp(17px,1.5vw,20px)}
@@ -211,71 +192,66 @@ a{color:var(--gold-light)}
 .bio{
   padding-block:clamp(48px,7vw,96px) clamp(64px,10vw,140px);
   display:grid;grid-template-columns:minmax(0,600px) minmax(0,1fr);gap:clamp(36px,6vw,96px);
-  background:radial-gradient(ellipse 30% 55% at 25% -5%,rgba(232,206,135,.15),rgba(11,11,12,0) 80%);
+  background:radial-gradient(ellipse 32% 55% at 24% -4%,rgba(201,162,39,.14),rgba(10,26,60,0) 80%);
 }
 .bio .frame{aspect-ratio:600/820}
 .bio .text{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px);padding-top:clamp(0px,2vw,40px)}
 .bio h1{font-size:clamp(4.5rem,10.5vw,9.5rem);line-height:.9;letter-spacing:-.02em;color:#FFFFFF}
-.bio .stand{
-  font-family:var(--display);font-style:italic;
-  font-size:clamp(1.5rem,2.5vw,2.125rem);line-height:1.25;color:var(--gold-light);
-}
+.bio .stand{font-family:var(--display);font-style:italic;font-size:clamp(1.5rem,2.5vw,2.125rem);line-height:1.25;color:var(--gold-light)}
 .placeholder{
-  border:1px dashed var(--gold-deep);padding:clamp(22px,3vw,32px) clamp(22px,3vw,36px);
-  display:flex;flex-direction:column;gap:16px;
-  background:repeating-linear-gradient(135deg,rgba(156,122,36,.05) 0 1px,rgba(11,11,12,0) 1px 12px);
+  border:1px dashed var(--aqua);padding:clamp(22px,3vw,32px) clamp(22px,3vw,36px);
+  display:flex;flex-direction:column;gap:16px;background:rgba(47,199,182,.05);
 }
 .placeholder .meta{
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  font-family:var(--mono);font-size:12px;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--gold);
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--aqua-light);
 }
 .placeholder p{font-size:clamp(16px,1.3vw,18px);line-height:1.75;color:var(--cream-dim)}
 
 .stages{padding-block:clamp(64px,10vw,140px);border-top:var(--rule)}
 .stages .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(36px,5.5vw,80px);margin-top:clamp(36px,5vw,64px)}
 .stage{display:flex;flex-direction:column;gap:24px}
-.stage .duo{height:clamp(240px,26vw,380px)}
+.stage .shot{height:clamp(240px,26vw,380px);overflow:hidden}
+.stage .shot img{width:100%;height:100%;object-fit:cover}
+.stage.broadway .shot{border:1px solid var(--gold)}
+.stage.room .shot{border:1px solid var(--aqua)}
 .stage h3{font-size:clamp(1.9rem,3vw,2.75rem);line-height:1.05;color:#FFFFFF}
 .stage p{font-size:clamp(16px,1.4vw,19px);line-height:1.7;max-width:560px}
 
 .watch{padding-bottom:clamp(64px,10vw,140px)}
 .watch a{
   display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
-  border:var(--rule);background:var(--ink-2);text-decoration:none;color:var(--cream);
-  transition:border-color .2s;
+  border:var(--rule);background:var(--ebony);text-decoration:none;color:var(--cream);transition:border-color .2s;
 }
-.watch a:hover,.watch a:focus-visible{border-color:var(--gold-light)}
-.watch .shot{aspect-ratio:16/9;border-right:var(--rule)}
+.watch a:hover,.watch a:focus-visible{border-color:var(--aqua)}
+.watch .shot{position:relative;aspect-ratio:16/9;border-right:var(--rule);overflow:hidden}
+.watch .shot img{width:100%;height:100%;object-fit:cover}
+.watch .scrim{position:absolute;inset:0;background:var(--ground);opacity:.45;pointer-events:none}
 .watch .play{
   position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;
-  border:1px solid var(--gold-light);border-radius:50%;
+  border:1px solid var(--aqua);border-radius:50%;
   display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2;
 }
-.watch .play span{
-  width:0;height:0;border-left:22px solid var(--gold-light);
-  border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px;
-}
+.watch .play span{width:0;height:0;border-left:22px solid var(--aqua);border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px}
 .watch .said{padding:clamp(32px,5vw,64px) clamp(24px,4.4vw,56px);display:flex;flex-direction:column;justify-content:center;gap:20px}
 .watch h2{font-size:clamp(2.4rem,5vw,4.5rem);line-height:1;color:#FFFFFF}
-.watch .handle{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-light)}
+.watch .handle{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--aqua-light)}
 
 /* ---------- connect ---------- */
 .quote{
   padding-block:clamp(64px,10vw,150px) clamp(56px,9vw,140px);
-  background:radial-gradient(ellipse 45% 75% at 50% -10%,rgba(232,206,135,.16),rgba(232,206,135,.04) 50%,rgba(11,11,12,0) 80%);
+  background:radial-gradient(ellipse 46% 76% at 50% -8%,rgba(47,199,182,.18),rgba(201,162,39,.05) 52%,rgba(10,26,60,0) 82%);
   display:flex;flex-direction:column;align-items:center;gap:clamp(32px,5vw,72px);
 }
 .diamond-rule{width:100%;display:flex;align-items:center;gap:20px}
 .diamond-rule .line{flex:1;height:1px;background:var(--gold)}
-.diamond-rule .d{width:9px;height:9px;border:1px solid var(--gold);transform:rotate(45deg)}
+.diamond-rule .d{width:9px;height:9px;border:1px solid var(--aqua);transform:rotate(45deg)}
 .quote blockquote{
   margin:0;max-width:1180px;text-align:center;
   font-family:var(--display);font-style:italic;font-weight:400;
   font-size:clamp(2.5rem,8.6vw,7.75rem);line-height:1.02;letter-spacing:-.015em;color:#FFFFFF;
 }
 .quote blockquote .mark{color:var(--gold)}
-.quote .attrib{font-size:13px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-align:center}
 
 .connect{
   padding-block:clamp(24px,4vw,40px) clamp(64px,10vw,150px);
@@ -286,44 +262,42 @@ a{color:var(--gold-light)}
 form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 24px;border-top:var(--rule);padding-top:clamp(28px,4vw,40px)}
 .field{display:flex;flex-direction:column;gap:10px}
 .field.full{grid-column:1 / -1}
-.field label{font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.field label{font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--aqua)}
 .field label .opt{color:var(--cream-dim);font-weight:500}
 .field input,.field select,.field textarea{
-  width:100%;background:var(--ink-2);border:1px solid var(--field-line);border-radius:0;
+  width:100%;background:var(--panel);border:1px solid var(--field-line);border-radius:0;
   color:var(--cream);font-family:var(--body);font-size:17px;padding:0 18px;
   outline:none;color-scheme:dark;transition:border-color .15s,box-shadow .15s;
 }
 .field input,.field select{height:56px}
 .field textarea{min-height:200px;padding:16px 18px;line-height:1.6;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--aqua);box-shadow:0 0 0 1px var(--aqua)}
 .select-shell{position:relative}
 .select-shell select{appearance:none;-webkit-appearance:none;padding-right:48px;cursor:pointer}
 .select-shell .chev{
   position:absolute;right:20px;top:50%;width:8px;height:8px;margin-top:-6px;
-  border-right:1px solid var(--gold);border-bottom:1px solid var(--gold);
-  transform:rotate(45deg);pointer-events:none;
+  border-right:1px solid var(--aqua);border-bottom:1px solid var(--aqua);transform:rotate(45deg);pointer-events:none;
 }
 .submit-row{grid-column:1 / -1;padding-top:8px}
 .thanks{border-top:var(--rule);padding-top:clamp(28px,4vw,40px);display:flex;flex-direction:column;gap:20px;align-items:flex-start}
 .thanks .said{font-family:var(--display);font-style:italic;font-size:clamp(1.75rem,3.4vw,2.5rem);color:#FFFFFF}
 
 .aside{display:flex;flex-direction:column;gap:26px;padding-top:clamp(0px,9vw,150px)}
-.card{border:var(--rule);padding:8px;background:var(--ink-2)}
-.card .inner{border:1px solid rgba(201,162,39,.4);padding:clamp(28px,4vw,40px) clamp(24px,3.4vw,36px);display:flex;flex-direction:column;gap:20px}
+.card{border:var(--rule);padding:8px;background:var(--ebony)}
+.card .inner{border:1px solid rgba(47,199,182,.45);padding:clamp(28px,4vw,40px) clamp(24px,3.4vw,36px);display:flex;flex-direction:column;gap:20px}
 .card h2{font-size:clamp(1.75rem,2.8vw,2.375rem);line-height:1.08;color:#FFFFFF}
 .card .btn{margin-top:8px;width:100%}
 .links{border:1px solid rgba(156,122,36,.6);padding:24px clamp(24px,3.4vw,36px);display:flex;flex-direction:column}
-.links .cap{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);padding-bottom:10px}
+.links .cap{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--aqua);padding-bottom:10px}
 .links a{
   min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;
-  border-top:1px solid rgba(156,122,36,.35);color:var(--cream);text-decoration:none;font-size:17px;
-  transition:color .2s;
+  border-top:1px solid rgba(156,122,36,.35);color:var(--cream);text-decoration:none;font-size:17px;transition:color .2s;
 }
-.links a:hover{color:var(--gold-light)}
-.links a .arw{color:var(--gold)}
+.links a:hover{color:var(--aqua-light)}
+.links a .arw{color:var(--aqua)}
 
 /* ---------- footer ---------- */
-.foot{border-top:var(--rule)}
+.foot{border-top:var(--rule);background:var(--ebony)}
 .foot-in{
   max-width:1440px;margin:0 auto;padding:clamp(36px,5vw,56px) var(--gutter) clamp(40px,5.5vw,64px);
   display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;
@@ -332,15 +306,20 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
 .foot .id .name{font-family:var(--display);font-size:15px;font-weight:500;letter-spacing:.3em;color:#FFFFFF;text-decoration:none}
 .foot .id .legal{font-size:15px;color:var(--cream-dim)}
 .foot nav{display:flex;gap:clamp(20px,3vw,40px);flex-wrap:wrap}
-.foot nav a{
-  font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--cream);text-decoration:none;padding:12px 0;transition:color .2s;
-}
-.foot nav a:hover{color:var(--gold-light)}
-.foot nav a.yt{color:var(--gold-light)}
+.foot nav a{font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--cream);text-decoration:none;padding:12px 0;transition:color .2s}
+.foot nav a:hover{color:var(--aqua-light)}
+.foot nav a.yt{color:var(--aqua-light)}
 .foot nav a.yt:hover{color:#FFFFFF}
 
 /* ---------- breakpoints ---------- */
+@media (max-width:1200px){
+  .offerings .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 0}
+  .offering{padding:32px 32px 32px 0;border-top:1px solid rgba(156,122,36,.5)}
+  .offering+.offering{padding-inline:32px}
+  .offering:nth-child(1),.offering:nth-child(2){border-top:none}
+  .offering:nth-child(odd){border-left:none;padding-left:0}
+  .offering:last-child{border-left-color:var(--gold-deep)}
+}
 @media (max-width:1100px){
   .connect{grid-template-columns:minmax(0,1fr) 340px}
   .rooms .wrap{grid-template-columns:240px minmax(0,1fr)}
@@ -351,9 +330,9 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
   .menu-btn{display:inline-flex;align-items:center;justify-content:center}
   .drawer[data-open="true"]{display:block}
   .hero-in{grid-template-columns:minmax(0,1fr);padding-bottom:0}
-  .hero-art{max-width:520px;margin-inline:auto}
+  .bridge{max-width:560px;margin-inline:auto}
   .offerings .grid{grid-template-columns:minmax(0,1fr)}
-  .offering,.offering+.offering{padding:0;border-left:none;border-top:1px solid rgba(156,122,36,.5);padding-block:32px}
+  .offering,.offering+.offering{padding:32px 0;border-left:none;border-top:1px solid rgba(156,122,36,.5)}
   .offering:first-child{border-top:none;padding-top:8px}
   .rooms .wrap{grid-template-columns:minmax(0,1fr)}
   .rooms ul{grid-template-columns:minmax(0,1fr);gap:0}
@@ -367,35 +346,31 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
   .aside{padding-top:0}
   .foot-in{flex-direction:column;align-items:stretch}
   .foot nav{flex-direction:column;gap:0}
-  .foot nav a{
-    min-height:48px;display:flex;align-items:center;
-    border-top:1px solid rgba(156,122,36,.35);
-  }
+  .foot nav a{min-height:48px;display:flex;align-items:center;border-top:1px solid rgba(156,122,36,.35)}
   .foot nav a:last-child{border-bottom:1px solid rgba(156,122,36,.35)}
 }
 @media (max-width:600px){
   body{font-size:16px}
   .masthead-in{min-height:68px}
-  .wordmark{letter-spacing:.22em}
+  .wordmark{letter-spacing:.2em}
   form.enquiry{grid-template-columns:minmax(0,1fr)}
-  .hero-art{max-width:none;margin-inline:0;aspect-ratio:370/560}
-  .hero-art .t1{left:auto;right:0;top:0;width:41%;height:44%}
-  .hero-art .t2{display:none}
-  .hero-art .lisa{left:0;top:7%;width:88%;height:93%}
+  .bridge{aspect-ratio:350/470;max-width:none}
+  .bridge .figure{width:58%;height:85%}
+  .bridge .wing{width:46%;height:26%}
+  .wing-label{display:none}
   .quote blockquote{font-size:clamp(2.25rem,11vw,3.5rem)}
   .btn{width:100%}
   .hero-copy .btn{align-self:stretch}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition-duration:.01ms !important;animation-duration:.01ms !important}
-  html{scroll-behavior:auto}
 }
 </style>
 </head>
 <body>
 <header class="masthead">
   <div class="masthead-in">
-    <a class="wordmark" href="#/" data-link>BROADWAY CONFIDENCE</a>
+    <a class="wordmark" href="#/" data-link>BROADWAY CONFIDENCE<span class="reg">&reg;</span></a>
     <nav class="nav" aria-label="Primary">
       <a href="#/" data-link data-nav="home">Home</a>
       <a href="#/about" data-link data-nav="about">About</a>
@@ -426,24 +401,23 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
           <p class="lede">Career enhancing leadership and communication coaching, whether you lead a team or a performance.</p>
           <a class="btn" href="#/connect" data-link>Book a consultation</a>
         </div>
-        <div class="hero-art">
-          <div class="duo t1">
-            <img src="assets/theatre-gilded.jpg" alt="A gilded Broadway proscenium with the red curtain down and the house lights up">
-            <span class="tint"></span>
-          </div>
-          <div class="duo t2">
-            <img src="assets/theatre-curtain.jpg" alt="A theatre auditorium seen from the balcony, red curtain closed">
-            <span class="tint"></span>
-          </div>
-          <div class="framed lisa">
+
+        <div class="bridge">
+          <div class="framed figure">
             <div class="plate">
               <img src="assets/lisa-hero.jpg" alt="Lisa Nicole Wilkerson standing full length in a red dress">
-              <span class="veil"></span>
             </div>
           </div>
+          <div class="wing left">
+            <img src="assets/theatre-gilded.jpg" alt="A gilded Broadway proscenium with the red curtain down">
+          </div>
+          <div class="wing right">
+            <img src="assets/boardroom.jpg" alt="A boardroom with tall windows, natural light and plants">
+          </div>
+          <div class="wing-label left">Broadway</div>
+          <div class="wing-label right">Boardroom</div>
         </div>
       </div>
-      <div class="bulbs" aria-hidden="true"></div>
     </section>
 
     <section class="offerings wrap">
@@ -452,7 +426,7 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
         <article class="offering">
           <div class="numeral" aria-hidden="true">i.</div>
           <h3>For business leaders</h3>
-          <p>I support business leaders in becoming more strategic, self-aware and confident communicators using &ldquo;Broadway Basics&trade;&rdquo; to strengthen their leadership presence.</p>
+          <p>I support business leaders in becoming more strategic, self-aware and confident communicators using &ldquo;Broadway Basics<span class="tm">&trade;</span>&rdquo; to strengthen their leadership presence.</p>
         </article>
         <article class="offering">
           <div class="numeral" aria-hidden="true">ii.</div>
@@ -463,6 +437,13 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
           <div class="numeral" aria-hidden="true">iii.</div>
           <h3>In the room</h3>
           <p>I provide targeted, interactive (and fun!) experiences for business leaders to learn and immediately apply strategies.</p>
+        </article>
+        <!-- Fourth offering drawn from her own media kit, person shifted to match the others. Pending her approval. -->
+        <article class="offering">
+          <div class="numeral" aria-hidden="true">iv.</div>
+          <h3>From the stage</h3>
+          <p>As a keynote speaker I provide concepts and clear-cut methods on achieving success, sharing personal stories, insights and calls to action with audiences across business, the arts, not-for-profit and sport.</p>
+          <p class="stat">Over 2,500 in one room</p>
         </article>
       </div>
     </section>
@@ -496,7 +477,6 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
       <div class="framed frame">
         <div class="plate">
           <img src="assets/lisa-portrait.jpg" alt="Portrait of Lisa Nicole Wilkerson">
-          <span class="veil"></span>
         </div>
       </div>
       <div class="text">
@@ -504,11 +484,10 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
         <h1>About</h1>
         <p class="stand">One foot on the stage. One foot in the boardroom.</p>
         <hr class="hair">
-        <!-- TODO: replace with the approved condensed biography from Prof. Wilkerson. -->
+        <!-- TODO: drop in the condensed biography she attached on 28 September. -->
         <div class="placeholder">
-          <div class="meta"><span>Placeholder &middot; condensed biography</span><span>approx. 180 words</span></div>
-          <p>[ Biography pending. This block holds a condensed biography of roughly 180 words, to be written and approved by Lisa Nicole Wilkerson. No biographical details have been invented here. ]</p>
-          <p>[ Second paragraph reserved for the continuation of the approved text. ]</p>
+          <div class="meta"><span>Placeholder &middot; condensed biography</span><span>sent 28 Sep, not yet received</span></div>
+          <p>[ Prof. Wilkerson&rsquo;s condensed biography goes here. She attached it to her email of 28 September; the file has not reached the build yet. Nothing has been invented in its place. ]</p>
         </div>
       </div>
     </section>
@@ -516,19 +495,13 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
     <section class="stages wrap">
       <div class="act"><span>Act II</span><span class="line"></span><span>Two stages</span></div>
       <div class="grid">
-        <article class="stage">
-          <div class="duo red">
-            <img src="assets/theatre-curtain.jpg" alt="A theatre auditorium with the red curtain closed">
-            <span class="tint"></span>
-          </div>
+        <article class="stage broadway">
+          <div class="shot"><img src="assets/theatre-curtain.jpg" alt="A theatre auditorium with the red curtain closed"></div>
           <h3>On Broadway</h3>
           <p>Award winning performer, dance captain and fight captain, with credits including The Gershwins&rsquo; Porgy and Bess, Motown the Musical and The Lion King.</p>
         </article>
-        <article class="stage">
-          <div class="duo">
-            <img src="assets/boardroom.jpg" alt="A boardroom with tall windows, natural light and plants">
-            <span class="tint"></span>
-          </div>
+        <article class="stage room">
+          <div class="shot"><img src="assets/boardroom.jpg" alt="A boardroom with tall windows, natural light and plants"></div>
           <h3>In the classroom</h3>
           <p>Adjunct Assistant Professor of Management Communication at NYU Stern, and a facilitator for Executive Education participants and MBA candidates.</p>
         </article>
@@ -537,9 +510,9 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
 
     <section class="watch wrap">
       <a href="https://www.youtube.com/@BroadwayConfidence1" target="_blank" rel="noopener">
-        <div class="duo shot">
+        <div class="shot">
           <img src="assets/theatre-gilded.jpg" alt="">
-          <span class="tint"></span>
+          <span class="scrim"></span>
           <span class="play"><span></span></span>
         </div>
         <div class="said">
@@ -559,8 +532,6 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
     <section class="quote wrap">
       <div class="diamond-rule" aria-hidden="true"><span class="line"></span><span class="d"></span><span class="line"></span></div>
       <blockquote><span class="mark">&ldquo;</span>Lisa Nicole is an experience.<span class="mark">&rdquo;</span></blockquote>
-      <!-- TODO: confirm who said this before the site goes public. -->
-      <p class="attrib">[ Attribution pending ]</p>
       <div class="diamond-rule" aria-hidden="true"><span class="line"></span><span class="d"></span><span class="line"></span></div>
     </section>
 
@@ -641,7 +612,7 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
 <footer class="foot">
   <div class="foot-in">
     <div class="id">
-      <a class="name" href="#/" data-link>BROADWAY CONFIDENCE</a>
+      <a class="name" href="#/" data-link>BROADWAY CONFIDENCE<span class="reg">&reg;</span></a>
       <span class="legal">Broadway Confidence Coaching &amp; Consulting</span>
     </div>
     <nav aria-label="Footer">
@@ -685,7 +656,6 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
     list.appendChild(li);
   });
 
-  /* ---- routing ---- */
   var ROUTES = { "#/": "home", "#/about": "about", "#/connect": "connect" };
   var TITLES = {
     home: "Broadway Confidence",
@@ -724,7 +694,6 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
 
   window.addEventListener("hashchange", function () { route(true); });
 
-  /* A link to the page already showing still returns the reader to the top. */
   Array.prototype.forEach.call(document.querySelectorAll("[data-link]"), function (a) {
     a.addEventListener("click", function () {
       if (a.getAttribute("href") === window.location.hash) {
@@ -741,21 +710,16 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
     menuBtn.textContent = open ? "Menu" : "Close";
   });
 
-  /* ---- enquiry form ----
-     No endpoint is connected yet, so this only swaps to the acknowledgement
+  /* No endpoint is connected yet, so this only swaps to the acknowledgement
      state. Wire it to a real handler before the site is published. */
   var form = document.getElementById("enquiry");
   var thanks = document.getElementById("thanks");
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
+    if (!form.checkValidity()) { form.reportValidity(); return; }
     form.hidden = true;
     thanks.hidden = false;
-    thanks.querySelector(".said").focus();
   });
 
   document.getElementById("resetForm").addEventListener("click", function () {
