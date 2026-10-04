@@ -9,50 +9,198 @@
 <title>Broadway Confidence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Karla:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap">
 <style>
+/* ============================================================
+   Broadway Confidence, v3 "House to Half"
+   One dark theme. Lapis is stone, gold is leaf, turquoise is light,
+   ebony is lacquer. One orchestrated page load (the cue), then stillness.
+   Every dimmed or parked state lives under html.cue, which only the
+   script adds, so the page is fully lit with no JavaScript.
+   ============================================================ */
 :root{
-  --ground:#0A1A3C;
-  --panel:#112A52;
-  --ebony:#12100E;
+  /* lapis as stone */
+  --lapis:#0A1A3C;
+  --lapis-out:#050C1F;
+  --lapis-panel:#112A52;
+  --lapis-lit:#16366A;
+  --field-line:#2A4A7A;
+  /* gold as leaf */
+  --gold-shadow:#6E5416;
   --gold-deep:#9C7A24;
   --gold:#C9A227;
+  --gold-bright:#E6C25A;
   --gold-light:#E8CE87;
+  --gold-hi:#F6E7B4;
+  --gold-spec:#FFF6DC;
+  --gold-btn:#B8922E;
+  --leaf:linear-gradient(112deg,#6E5416 0%,#C9A227 28%,#F6E7B4 46%,#C9A227 58%,#9C7A24 78%,#E6C25A 100%);
+  --leaf-x:linear-gradient(90deg,#6E5416,#E6C25A 35%,#9C7A24 70%,#6E5416);
+  --leaf-y:linear-gradient(to bottom,#E6C25A,#9C7A24 40%,#6E5416);
+  --leaf-text:linear-gradient(112deg,#B8922E 0%,#C9A227 25%,#F6E7B4 48%,#C9A227 62%,#E6C25A 100%); /* shadow stop #B8922E (the button floor), not #9C7A24: 4.1:1 on the Connect quote pool, 5.9:1 on lapis */
+  --leaf-btn:linear-gradient(112deg,#B8922E 0%,#D9B84A 30%,#F6E7B4 50%,#D9B84A 70%,#B8922E 100%);
+  --sheen:linear-gradient(112deg,transparent 40%,rgba(255,246,220,.85) 50%,transparent 60%);
+  /* tungsten: bulb cores and halos only */
+  --tung-core:#FFF6DC;--tung-1:#FFE9B0;--tung-2:#FFC85C;--tung-halo:#E8891E;--tung-socket:#6E5416;
+  /* turquoise as light */
   --aqua:#2FC7B6;
+  --aqua-live:#3DE0CC;
   --aqua-light:#7FE6D8;
+  --aqua-glow:#8DF3E6;
+  --aqua-core:#B6FFF4;
+  --aqua-deep:#1A8F84;
+  --aqua-rgb:61,224,204;
+  /* ebony as lacquer */
+  --ebony:#12100E;
+  --ebony-warm:#1A1612;
+  --gloss:linear-gradient(170deg,rgba(255,255,255,.06),rgba(255,255,255,0) 40%);
+  /* neutrals */
   --cream:#F4EFE4;
   --cream-dim:#B9C5DA;
   --red:#B0122C;
-  --field-line:#2A4A7A;
+  /* shadows: light from the upper left */
+  --shadow-slab-up:0 -24px 48px -24px rgba(0,0,0,.6);
+  --shadow-slab-down:0 32px 64px -24px rgba(0,0,0,.8);
+  /* type and motion */
   --display:"Bodoni Moda",Didot,"Bodoni MT",Georgia,serif;
   --body:Karla,"Helvetica Neue",Arial,sans-serif;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --ease-out:cubic-bezier(.2,.7,.2,1);
+  --ease-settle:cubic-bezier(.33,0,.15,1);
+  --ease-inout:cubic-bezier(.65,0,.35,1);
   --gutter:clamp(20px,4.4vw,64px);
-  --rule:1px solid var(--gold-deep);
+  --grain:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27200%27%20height%3D%27200%27%3E%3Cfilter%20id%3D%27g%27%20x%3D%270%27%20y%3D%270%27%20width%3D%27100%25%27%20height%3D%27100%25%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.9%27%20numOctaves%3D%272%27%20stitchTiles%3D%27stitch%27%20seed%3D%273%27%2F%3E%3CfeColorMatrix%20values%3D%270%200%200%200%20.96%20%200%200%200%200%20.94%20%200%200%200%200%20.89%20%200.8%200.8%200.8%200%20-1.2%27%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type%3D%27table%27%20tableValues%3D%270%200.078%200.078%27%2F%3E%3C%2FfeComponentTransfer%3E%3C%2Ffilter%3E%3Crect%20width%3D%27200%27%20height%3D%27200%27%20filter%3D%27url%28%23g%29%27%2F%3E%3C%2Fsvg%3E");
+  --pyrite:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27480%27%20height%3D%27480%27%3E%3Cfilter%20id%3D%27p%27%20x%3D%270%27%20y%3D%270%27%20width%3D%27100%25%27%20height%3D%27100%25%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%27.6%27%20numOctaves%3D%271%27%20stitchTiles%3D%27stitch%27%20seed%3D%2711%27%2F%3E%3CfeColorMatrix%20values%3D%270%200%200%200%20.91%20%200%200%200%200%20.81%20%200%200%200%200%20.53%20%200.51%200.51%200.51%200%200%27%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type%3D%27table%27%20tableValues%3D%270%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200%200.09%27%2F%3E%3C%2FfeComponentTransfer%3E%3C%2Ffilter%3E%3Crect%20width%3D%27480%27%20height%3D%27480%27%20filter%3D%27url%28%23p%29%27%2F%3E%3C%2Fsvg%3E");
 }
 
+/* ---------- base ---------- */
 *{box-sizing:border-box}
 /* Class selectors that set `display` outbid the browser's own [hidden] rule,
    so state toggled with el.hidden needs this to actually hide. */
 [hidden]{display:none !important}
+html{background:#0A1A3C}
 body{
-  margin:0;background:var(--ground);color:var(--cream);
+  margin:0;color:var(--cream);
+  background-color:#0A1A3C;
+  background-image:radial-gradient(ellipse 60% 40% at 15% 20%,rgba(22,54,106,.20),transparent 70%),radial-gradient(ellipse 50% 50% at 85% 80%,rgba(5,12,31,.30),transparent 70%);
   font-family:var(--body);font-size:17px;line-height:1.6;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-::selection{background:var(--red);color:#FFFFFF}
+/* stone: grain plus pyrite flecks, one fixed layer, no blend mode. Both tiles bake their alpha
+   from the noise. fractalNoise sits tightly around .5 per channel (R+G+B mean 1.50, sd .21), so the
+   grain maps alpha = .8(R+G+B) - 1.2 (zero at the median: half the pixels stay untouched) and caps
+   it at .078 with a table; the pyrite ramps 0 to .09 over the top 3% of its noise (0.7% at full).
+   At this layer's .9 opacity the brightest grain pixel is a 7.0% cream veil (mean 0.9%) and the
+   brightest fleck 8.1%, so the declared colours reach the screen (lapis stays within 3 levels of
+   #0A1A3C) and every text pair keeps 4.5:1 at every pixel, a grain peak on a pyrite fleck included
+   (the 13px lapis button text on the #B8922E brass floor, the tightest pair at 5.86:1, bottoms out
+   at 4.6:1). Recalibrate here, never by raising the opacity. */
+body::before{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background-image:var(--grain),var(--pyrite);
+  background-size:200px 200px,480px 480px;opacity:.9;
+}
+::selection{background:#C9A227;color:#0A1A3C}
 img{max-width:100%;display:block}
-h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;text-wrap:balance}
+h1,h2,h3,.display{font-family:var(--display);font-weight:500;margin:0;text-wrap:balance;font-optical-sizing:auto}
 p{margin:0;text-wrap:pretty}
 a{color:var(--aqua-light)}
-:focus-visible{outline:2px solid var(--aqua);outline-offset:3px}
+:focus-visible{outline:2px solid var(--aqua-live);outline-offset:3px}
 
 .wrap{max-width:1440px;margin:0 auto;padding-inline:var(--gutter)}
 .reg{font-size:.5em;vertical-align:top;position:relative;top:-.15em;margin-left:5px;letter-spacing:0;color:var(--gold)}
 .tm{font-size:.3em;vertical-align:top;position:relative;top:.5em;margin-left:4px;letter-spacing:0}
 
-/* ---------- header ---------- */
-.masthead{border-bottom:var(--rule)}
+/* gold as leaf: gradient text, 42px and above only. The background paints only inside the
+   box, and Bodoni's italic overhangs and descenders (the y of Broadway, the comma of 2,500)
+   fall outside a .98 line box, so the padding bleeds the painted box past the ink and the
+   negative margins give the room back: layout neutral, nothing sliced. */
+.leaf-text{
+  background-image:var(--leaf-text);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  display:inline-block;padding:.1em .06em .3em;margin:-.1em -.06em -.3em;
+}
+/* the stamped depth sits on a wrapper, never on the clipped element itself
+   (WebKit can lose background-clip:text when a filter is on the same box) */
+.stamp{display:inline-block;filter:drop-shadow(0 1px 0 rgba(42,29,5,.8))}
+/* one pass of light across a leaf surface (stacked 300% sheen over the leaf). The pass runs from
+   150% to -50%: the 300% tile starts entirely left of the box and ends entirely right of it
+   whatever the box's aspect (a tall narrow numeral would otherwise keep a cream residue on the
+   glyph for the rest of the session); no-repeat stops the neighbouring tile re-entering there. */
+@keyframes sheen{from{background-position:150% 0,0 0}to{background-position:-50% 0,0 0}}
+.leaf-text.on,.on>.leaf-text{background-image:var(--sheen),var(--leaf-text);background-size:300% 100%,100% 100%;background-repeat:no-repeat;animation:sheen 1200ms linear both}
+
+/* ---------- the house overlay (house lights at half) ---------- */
+.house{position:fixed;inset:0;background:#050C1F;z-index:60;pointer-events:none;animation:house 900ms var(--ease-inout) forwards}
+@keyframes house{to{opacity:0;visibility:hidden}}
+html.no-cue .house{display:none}
+
+/* ---------- labels: Bodoni at opsz 6, the chunky program cut ---------- */
+.act span,.eyebrow,.stat-cap,.links .cap{
+  font-family:var(--display);font-variation-settings:"opsz" 6;
+  font-size:clamp(11px,1vw,12px);font-weight:700;letter-spacing:.18em;line-height:1;
+  text-transform:uppercase;color:var(--aqua);
+}
+/* the Act dividers are real h2s (outline: h1, Act h2, h3s); the h2 box itself contributes nothing visually */
+.act{display:flex;align-items:baseline;gap:20px;font-size:inherit;font-weight:400;text-wrap:wrap}
+.act .line{flex:1;position:relative;height:1px}
+.act .line::before,.act .line::after{content:"";position:absolute;inset:0;background:var(--leaf-x)}
+.act .line::before{opacity:.6}
+.act .line::after{transform:scaleX(0);transform-origin:left}
+.act.on .line::after,html:not(.js) .act .line::after{transform:scaleX(1);transition:transform 900ms var(--ease-inout)}
+.eyebrow.glow,.stat-cap{color:var(--aqua-glow)}
+
+.hair{width:64px;height:1px;border:0;margin:0;background:var(--leaf-x)}
+
+/* ---------- buttons: a brass plate with a lit top edge ---------- */
+.btn{
+  position:relative;overflow:hidden;isolation:isolate;
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:58px;padding:0 36px;background:var(--leaf-btn);color:var(--lapis);
+  box-shadow:inset 0 1px 0 rgba(255,246,220,.55);
+  font-family:var(--body);font-size:13px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;
+  transition:box-shadow .2s;
+}
+.btn::after{content:"";position:absolute;inset:0;background:var(--sheen);background-size:300% 100%;background-position:150% 0;background-repeat:no-repeat;opacity:0;pointer-events:none}
+@keyframes sheen-btn{from{background-position:150% 0}to{background-position:-50% 0}}
+@keyframes sheen-hover{from{background-position:150% 0}to{background-position:-50% 0}}
+.btn:hover,.btn:focus-visible{box-shadow:inset 0 1px 0 rgba(255,246,220,.55),0 0 0 1px rgba(61,224,204,.9),0 0 24px rgba(61,224,204,.35)}
+.btn:hover::after,.btn:focus-visible::after{opacity:1;animation:sheen-hover 600ms linear both}
+.btn-quiet{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:0 24px;background:transparent;
+  border:1px solid var(--aqua-live);color:var(--aqua-light);
+  font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;cursor:pointer;transition:border-color .2s,color .2s,box-shadow .2s;
+}
+.btn-quiet:hover,.btn-quiet:focus-visible{border-color:var(--aqua-glow);color:#FFFFFF;box-shadow:0 0 18px rgba(61,224,204,.25)}
+
+/* ---------- the framed photograph (hero plate and About portrait) ---------- */
+.framed{position:relative;padding:11px;background:var(--lapis)}
+.plate{position:relative;width:100%;height:100%;overflow:hidden;isolation:isolate;box-shadow:0 0 0 1px rgba(246,231,180,.32)}
+.plate img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:contrast(1.04) saturate(1.04)}
+/* edge vignette at the spec's section 13 fallback (corners .46, floor .40 fading out at 28%): the grey
+   studio backdrop is the brightest surface on the page, so its corners and floor fall into lapis; the
+   clear zone is unchanged (transparent to 58% of the ellipse, her face sits at .28 of the radius) */
+.plate::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 94% at 50% 38%,transparent 58%,rgba(10,26,60,.46) 100%),linear-gradient(to top,rgba(10,26,60,.40),transparent 28%);
+}
+.plate .dim{position:absolute;inset:0;background:#050C1F;opacity:0;pointer-events:none}
+.frame-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.frame-svg .rail{fill:none;stroke-width:1.5;stroke-dasharray:1000;stroke-dashoffset:0}
+.frame-svg .rail.l{stroke:url(#leafL)}
+.frame-svg .rail.r{stroke:url(#leafR)}
+.bio .frame-svg .rail.l{stroke:url(#leafL2)}
+.bio .frame-svg .rail.r{stroke:url(#leafR2)}
+.frame-svg .glint{fill:none;stroke:#FFF6DC;stroke-width:1.5;stroke-dasharray:80 1920;stroke-dashoffset:80;opacity:0}
+.frame-svg .corner{fill:none;stroke:#E6C25A;stroke-width:1}
+.frame-svg .ping{fill:#FFF6DC;opacity:0;transform-box:fill-box;transform-origin:center;filter:drop-shadow(0 0 8px rgba(255,246,220,.9))}
+
+/* ---------- masthead and drawer ---------- */
+.masthead{position:relative;background:var(--lapis)}
+.masthead::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--leaf-x)}
 .masthead-in{
   max-width:1440px;margin:0 auto;padding-inline:var(--gutter);
   min-height:96px;display:flex;align-items:center;justify-content:space-between;gap:24px;
@@ -66,18 +214,19 @@ a{color:var(--aqua-light)}
 .nav a{
   font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
   color:var(--cream);text-decoration:none;padding:14px 0;
-  border-bottom:1px solid transparent;transition:color .2s,border-color .2s;
+  border-bottom:1px solid transparent;transition:color .2s,border-color .2s,text-shadow .2s;
 }
-.nav a:hover{color:var(--aqua-light)}
-.nav a[aria-current="page"]{color:var(--aqua);border-bottom-color:var(--aqua)}
-
+.nav a:hover{color:var(--aqua-glow)}
+.nav a[aria-current="page"]{color:var(--aqua-live);border-bottom-color:var(--aqua-live);text-shadow:0 0 12px rgba(61,224,204,.35)}
 .menu-btn{
   display:none;min-width:70px;min-height:44px;background:transparent;
-  border:1px solid var(--aqua);color:var(--aqua-light);
+  border:1px solid var(--aqua-live);color:var(--aqua-light);
   font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.24em;
   text-transform:uppercase;cursor:pointer;
 }
-.drawer{display:none;border-bottom:var(--rule);background:var(--panel)}
+.drawer{display:none;position:relative;background:var(--lapis-panel)}
+/* the masthead's rule already closes the drawer's top edge; only the bottom hairline is drawn here */
+.drawer::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--leaf-x)}
 .drawer nav{max-width:1440px;margin:0 auto;padding:4px var(--gutter) 18px;display:flex;flex-direction:column}
 .drawer a{
   min-height:60px;display:flex;align-items:center;
@@ -87,90 +236,203 @@ a{color:var(--aqua-light)}
 .drawer a:last-child{border-bottom:none}
 .drawer a[aria-current="page"]{color:var(--aqua-light)}
 
-/* ---------- shared devices ---------- */
-.act{
-  display:flex;align-items:baseline;gap:20px;
-  font-size:clamp(11px,1vw,12px);font-weight:700;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--aqua);
-}
-.act .line{flex:1;height:1px;background:var(--gold-deep);opacity:.6}
-.eyebrow{
-  font-size:clamp(11px,1vw,12px);font-weight:700;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--aqua);
-}
-.hair{width:64px;height:1px;background:var(--gold);border:0;margin:0}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-height:58px;padding:0 36px;background:var(--gold);color:var(--ground);
-  font-family:var(--body);font-size:13px;font-weight:700;letter-spacing:.22em;
-  text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;
-  transition:background .2s,color .2s;
-}
-.btn:hover,.btn:focus-visible{background:var(--aqua);color:var(--ground)}
-.btn-quiet{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-height:48px;padding:0 24px;background:transparent;
-  border:1px solid var(--aqua);color:var(--aqua-light);
-  font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.22em;
-  text-transform:uppercase;cursor:pointer;transition:border-color .2s,color .2s;
-}
-.btn-quiet:hover{border-color:var(--aqua-light);color:#FFFFFF}
-
-.framed{border:1px solid var(--gold);padding:10px;background:var(--ground)}
-.framed .plate{position:relative;width:100%;height:100%;overflow:hidden}
-.framed .plate img{width:100%;height:100%;object-fit:cover;filter:contrast(1.04) saturate(1.04)}
-
-/* ---------- the bridge, made literal ---------- */
-.hero{
-  border-bottom:var(--rule);
+/* ---------- Act I: the hero, the stage she stands on ---------- */
+.hero{position:relative;overflow:hidden;background:#050C1F}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;
   background:
-    radial-gradient(ellipse 42% 60% at 78% 4%,rgba(47,199,182,.16),rgba(10,26,60,0) 72%),
-    radial-gradient(ellipse 34% 50% at 12% 10%,rgba(201,162,39,.12),rgba(10,26,60,0) 70%),
-    var(--ground);
+    radial-gradient(ellipse 36% 22% at 72% 100%,rgba(201,162,39,.16),transparent 70%),
+    radial-gradient(ellipse 36% 22% at 96% 100%,rgba(61,224,204,.18),transparent 70%),
+    radial-gradient(ellipse 58% 72% at 72% 36%,#16366A 0%,#0A1A3C 52%,#050C1F 100%);
 }
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--leaf-x);z-index:1}
+/* the bridge column is capped by viewport height as well as width (height is width x 1.25, so
+   (100vh - 160px) * .8 keeps masthead 96 + padding 40 + bridge + 24px inside one screen): the apron,
+   the footlights and the hot node, the beat the whole cue builds to, land above the fold on laptop
+   viewports. Every bridge child is in percentages, so nothing inside it changes. Floor 400px. */
 .hero-in{
-  max-width:1440px;margin:0 auto;padding:clamp(48px,7vw,96px) var(--gutter) 0;
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,700px);
-  gap:clamp(32px,5vw,64px);align-items:center;
+  position:relative;z-index:2;max-width:1440px;margin:0 auto;padding:40px var(--gutter) 0;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,max(400px,min(640px,55%,calc((100vh - 160px) * .8))));gap:56px;align-items:center;
 }
-.hero-copy{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,34px);max-width:560px;padding-bottom:clamp(40px,6vw,96px)}
-.hero-copy h1{font-size:clamp(2.45rem,5.1vw,4.625rem);line-height:1.02;letter-spacing:-.01em;color:#FFFFFF}
-.hero-copy h1 em{font-style:italic;color:var(--gold-light)}
-.hero-copy .lede{font-size:clamp(17px,1.5vw,20px);max-width:490px}
+.hero-copy{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,28px);max-width:480px;padding-bottom:clamp(40px,6vw,96px)}
+.hero-copy h1{font-size:clamp(2.875rem,6.25vw,5.25rem);font-weight:400;line-height:.98;letter-spacing:-.015em;color:#FFFFFF}
+.hero-copy h1 .w{display:inline-block}
+.hero-copy h1 em{font-style:italic;font-weight:400}
+.hero-copy h1 .bd{font-weight:500;text-shadow:0 0 32px rgba(61,224,204,.28)}
+.hero-copy h1 .tm{color:var(--gold)}
+.hero-copy .lede{font-size:clamp(17px,1.5vw,20px);max-width:440px}
 .hero-copy .btn{align-self:flex-start}
 
-.bridge{position:relative;width:100%;aspect-ratio:700/820;margin-top:clamp(24px,3vw,0px)}
-.bridge .figure{position:absolute;left:50%;transform:translateX(-50%);top:0;width:47.1%;height:85.9%;z-index:1}
-.bridge .wing{
-  position:absolute;bottom:0;width:40.9%;height:26.1%;
-  overflow:hidden;background:var(--ebony);z-index:2;
+/* the bridge: her frame, two wings, footlights (percentages of a 4/5 box) */
+/* align-self:end pins the bridge to the apron whichever grid cell is taller, so the footlights,
+   seam and hot node always sit on the hero's rule; the copy stays centred by the grid */
+.bridge{position:relative;width:100%;aspect-ratio:4/5;isolation:isolate;align-self:end}
+.bridge .frame{position:absolute;left:25.625%;top:3%;width:48.75%;height:84%;z-index:1}
+.wing{position:absolute;bottom:3%;width:40.9375%;height:26%;padding:1px;z-index:2}
+.wing img{width:100%;height:100%;object-fit:cover;filter:contrast(1.04) saturate(1.04)}
+.wing.left{left:0;background:var(--leaf);box-shadow:0 0 28px rgba(201,162,39,.22)}
+.wing.right{right:0;background:var(--aqua-live);box-shadow:0 0 28px rgba(61,224,204,.30)}
+.wing-label{position:absolute;bottom:calc(29% + 14px);z-index:2;font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;line-height:1}
+.wing-label.left{left:0;color:var(--gold-hi)}
+.wing-label.right{right:0;text-align:right;color:var(--aqua-glow);text-shadow:0 0 16px rgba(61,224,204,.45)}
+.foots{
+  position:absolute;left:0;right:0;bottom:0;height:3%;z-index:2;
+  display:flex;justify-content:space-between;align-items:center;padding-inline:1.5%;
+  background:linear-gradient(to top,rgba(255,233,176,.14),transparent) left/50% 100% no-repeat,linear-gradient(to top,rgba(61,224,204,.12),transparent) right/50% 100% no-repeat;
 }
-.bridge .wing img{width:100%;height:100%;object-fit:cover}
-.bridge .wing.left{left:0;border:1px solid var(--gold)}
-.bridge .wing.right{right:0;border:1px solid var(--aqua)}
-.wing-label{
-  position:absolute;bottom:calc(26.1% + 14px);width:40.9%;text-align:center;z-index:2;
-  font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;
-}
-.wing-label.left{left:0;color:var(--gold-light)}
-.wing-label.right{right:0;color:var(--aqua-light)}
+.apron-seam{position:absolute;left:50%;bottom:0;height:1px;width:50vw;z-index:2;background:linear-gradient(90deg,#FFFFFF 0,#3DE0CC 6px,#3DE0CC 60%,#1A8F84 100%)}
+.apron-seam::before{content:"";position:absolute;left:-1px;top:-1px;width:3px;height:3px;background:#FFFFFF;box-shadow:0 0 10px rgba(201,162,39,.7),0 0 14px rgba(61,224,204,.7)}
+/* the follow spot. The rest layer (alpha .06) is the resting stage light over the whole bridge.
+   The peak layer (alpha .20, the spec value; fallback .14 / .04 if her complexion reads lifted)
+   lives INSIDE the plate, a placement deviation from the spec's bridge-level layer, so the pool
+   lands on her and the dark cyclorama and never sits as haze on the mat and rails. Same centre as
+   the rest layer (49.5%, 13.8% of the bridge, her measured head position) and the same ellipse,
+   re-expressed in the plate's own box: 160% of the bridge is 353% x 197% of the 290 x 650 plate. */
+.spot{position:absolute;left:-30.5%;top:-66.2%;width:160%;height:160%;pointer-events:none;z-index:3}
+.spot-rest{background:radial-gradient(ellipse 22% 30% at 50% 50%,rgba(255,241,214,.06) 0%,rgba(255,241,214,.021) 34%,transparent 66%)}
+.spot-peak{position:absolute;left:-127.5%;top:-87%;width:353%;height:197%;pointer-events:none;z-index:1;opacity:0;
+  background:radial-gradient(ellipse 22% 30% at 50% 50%,rgba(255,241,214,.20) 0%,rgba(255,241,214,.07) 34%,transparent 66%)}
 
-/* ---------- offerings ---------- */
+/* ---------- tungsten footlights and the ghost light (CSS only) ---------- */
+.bulb{position:relative;isolation:isolate;flex:0 0 10px;width:10px;height:10px;border-radius:50%;display:block;
+  background:radial-gradient(circle at 40% 35%,#FFF6DC 0%,#FFE9B0 28%,#FFC85C 60%,#C98A2A 100%)}
+.bulb::before{content:"";position:absolute;inset:-2px;border-radius:50%;border:1px solid #9C7A24;background:#6E5416;z-index:-1}
+.bulb::after{content:"";position:absolute;inset:0;border-radius:50%;opacity:.85;
+  box-shadow:0 0 2px 1px rgba(255,236,190,.9),0 0 8px 2px rgba(255,200,92,.65),0 0 18px 6px rgba(232,137,30,.32),0 0 40px 14px rgba(232,137,30,.12);
+  animation:breathe 3.6s ease-in-out infinite alternate}
+.bulb.aqua{background:radial-gradient(circle at 40% 35%,#FFFFFF 0%,#B6FFF4 30%,#3DE0CC 62%,#0E8C80 100%)}
+.bulb.aqua::before{border-color:#1A8F84;background:#0B3D3A}
+.bulb.aqua::after{box-shadow:0 0 2px 1px rgba(214,255,248,.9),0 0 8px 2px rgba(61,224,204,.65),0 0 18px 6px rgba(47,199,182,.32),0 0 40px 14px rgba(47,199,182,.12)}
+.bulb.centre{background:radial-gradient(circle at 40% 35%,#FFFFFF 0%,#FFF6DC 40%,#E8CE87 75%,#C98A2A 100%)}
+.bulb.centre::after{box-shadow:0 0 2px 1px rgba(255,255,255,.95),0 0 10px 3px rgba(255,236,190,.7),0 0 20px 8px rgba(61,224,204,.25),0 0 48px 18px rgba(232,137,30,.14)}
+.foots .bulb:nth-child(1)::after{animation-delay:-.37s}
+.foots .bulb:nth-child(2)::after{animation-delay:-.74s}
+.foots .bulb:nth-child(3)::after{animation-delay:-1.11s}
+.foots .bulb:nth-child(4)::after{animation-delay:-1.48s}
+.foots .bulb:nth-child(5)::after{animation-delay:-1.85s}
+.foots .bulb:nth-child(6)::after{animation-delay:-2.22s}
+.foots .bulb:nth-child(7)::after{animation-delay:-2.59s}
+.foots .bulb:nth-child(8)::after{animation-delay:-2.96s}
+.foots .bulb:nth-child(9)::after{animation-delay:-3.33s}
+.foots .bulb:nth-child(10)::after{animation-delay:-3.7s}
+.foots .bulb:nth-child(11)::after{animation-delay:-4.07s}
+.bulb.ghost{flex:none;margin-top:4px}
+.bulb.ghost::after{animation-duration:6s;animation-delay:-2s}
+.hero.off .bulb::after{animation-play-state:paused}
+@keyframes breathe{from{opacity:.72}to{opacity:1}}
+@keyframes ignite{0%{filter:brightness(.3)}60%{filter:brightness(1.4)}100%{filter:brightness(1)}}
+@keyframes halo-in{0%{opacity:0}60%{opacity:1}100%{opacity:.85}}
+@keyframes bloom{0%{transform:scale(1)}50%{transform:scale(1.6)}100%{transform:scale(1)}}
+@keyframes ping{0%{opacity:0;transform:scale(0)}50%{opacity:1;transform:scale(1.6)}100%{opacity:0;transform:scale(1)}}
+@keyframes glint{0%{opacity:.9;stroke-dashoffset:80}90%{opacity:.9}100%{opacity:0;stroke-dashoffset:-1000}}
+
+/* ============================================================
+   THE CUE ("house to half, house out, go"). Applied by the script
+   as html.cue on Home only, once per session. The dim values below
+   carry NO transitions, so entering the dim state is a snap however
+   the first paint falls; each beat class on .hero flips a property
+   back to its resting value and declares the transition it travels
+   on, so removing html.cue also cancels anything still in flight.
+   With html.cue absent, every rule below is inert and the page is
+   the lit resting state.
+   ============================================================ */
+html.cue:not(.shine) body{background-color:#050C1F}
+html.shine body{transition:background-color 900ms var(--ease-inout)}
+html.cue .masthead{opacity:.35}
+html.cue.shine .masthead{opacity:1;transition:opacity 600ms var(--ease-inout)}
+html.cue .hero::before{opacity:0}
+html.cue .hero.s-house::before{opacity:1;transition:opacity 900ms var(--ease-inout)}
+html.cue .hero-copy .eyebrow,html.cue .hero-copy .lede,html.cue .hero-copy .btn{opacity:0}
+html.cue .hero.s-eye .eyebrow{opacity:1;transition:opacity 400ms var(--ease-out)}
+html.cue .hero.s-lede .lede{opacity:1;transition:opacity 500ms var(--ease-out)}
+html.cue .hero.s-btn .btn{opacity:1;transition:opacity 400ms var(--ease-out),box-shadow .2s}
+html.cue .hero-copy .w{opacity:0;transform:translateY(14px)}
+html.cue .hero.s-h1 .w{opacity:1;transform:none;transition:opacity 500ms var(--ease-out),transform 500ms var(--ease-out)}
+html.cue .hero.s-h1 .w:nth-child(2){transition-delay:50ms}
+html.cue .hero.s-h1 .w:nth-child(3){transition-delay:100ms}
+html.cue .hero.s-h1 .w:nth-child(4){transition-delay:150ms}
+html.cue .hero.s-h1 .w:nth-child(5){transition-delay:200ms}
+html.cue .hero.s-h1 .w:nth-child(6){transition-delay:250ms}
+html.cue .hero.s-h1 .w:nth-child(7){transition-delay:300ms}
+html.cue .hero-copy .hair{transform:scaleX(0);transform-origin:left}
+html.cue .hero.s-hair .hair{transform:none;transition:transform 500ms var(--ease-inout)}
+html.cue .plate .dim{opacity:.62}
+html.cue .hero.s-plate .plate .dim{opacity:0;transition:opacity 900ms var(--ease-out)}
+html.cue .frame-svg .rail{stroke-dashoffset:1000}
+html.cue .hero.s-frame .frame-svg .rail{stroke-dashoffset:0;transition:stroke-dashoffset 850ms var(--ease-settle)}
+html.cue .frame-svg .corner{opacity:0}
+html.cue .hero.s-ping .frame-svg .corner{opacity:1;transition:opacity 300ms var(--ease-out)}
+html.cue .hero.s-ping .frame-svg .ping{animation:ping 240ms var(--ease-out) both}
+html.cue .wing.left{opacity:0;transform:translateX(-24px)}
+html.cue .wing.right{opacity:0;transform:translateX(24px)}
+html.cue .hero.s-wl .wing.left,html.cue .hero.s-wr .wing.right{opacity:1;transform:none;transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out)}
+html.cue .wing-label{opacity:0}
+html.cue .hero.s-labels .wing-label{opacity:1;transition:opacity 400ms var(--ease-out)}
+html.cue .hero.s-labels .wing-label.right{transition-delay:100ms}
+html.cue .foots,html.cue .apron-seam{opacity:.35}
+html.cue .hero.s-foot .foots,html.cue .hero.s-foot .apron-seam{opacity:1;transition:opacity 700ms var(--ease-inout)}
+html.cue .bulb{filter:brightness(.3)}
+html.cue .bulb::after{opacity:0;animation:none}
+html.cue .hero.s-foot .bulb{animation:ignite 320ms var(--ease-out) both}
+html.cue .hero.s-foot .bulb::after{animation:halo-in 320ms var(--ease-out) both;animation-delay:inherit}
+html.cue .hero.s-foot .bulb:nth-child(2),html.cue .hero.s-foot .bulb:nth-child(10){animation-delay:70ms}
+html.cue .hero.s-foot .bulb:nth-child(3),html.cue .hero.s-foot .bulb:nth-child(9){animation-delay:140ms}
+html.cue .hero.s-foot .bulb:nth-child(4),html.cue .hero.s-foot .bulb:nth-child(8){animation-delay:210ms}
+html.cue .hero.s-foot .bulb:nth-child(5),html.cue .hero.s-foot .bulb:nth-child(7){animation-delay:280ms}
+html.cue .hero.s-foot .bulb.centre{animation-delay:360ms}
+html.cue .hero.s-foot .bulb.centre::after{animation:halo-in 320ms var(--ease-out) 360ms both,bloom 400ms var(--ease-out) 680ms both}
+/* the follow spot sweeps in from the upper left (the side the studio lit her from), clipped to the
+   plate, and lands on her face at 1400 on the still dark cyclorama (scrim at .62). It holds for a
+   beat; the scrim then lifts from 1450 to 2350 under the rising headline while the peak layer
+   opens into the rest level from 2000 */
+html.cue .spot-peak{opacity:0;transform:translate(-34%,-36%) scale(.72)}
+html.cue .hero.s-spot .spot-peak{opacity:1;transform:none;transition:transform 900ms var(--ease-settle),opacity 400ms var(--ease-out)}
+html.cue .hero.s-settle .spot-peak{opacity:0;transition:opacity 600ms var(--ease-inout),transform 900ms var(--ease-settle)}
+html.cue .spot-rest{opacity:0}
+html.cue .hero.s-settle .spot-rest{opacity:1;transition:opacity 600ms var(--ease-inout)}
+/* the one specular pass at 2000ms: leaf surfaces catch the light, a cream dash runs up the rails.
+   html.shine is a one-shot gate: the script removes it at 3300ms (the pass is over) or on skip.
+   Every end state below equals the resting rule (sheen tile off the box, glint opacity 0, button
+   ::after opacity 0), so the removal is invisible, and with the class gone these animations cannot
+   restart when #page-home is re-shown after About or Connect (display:none restarts CSS animations). */
+html.shine .hero-copy .hair,html.shine .hero-copy h1 .leaf-text{background-image:var(--sheen),var(--leaf-x);background-size:300% 100%,100% 100%;background-repeat:no-repeat;animation:sheen 1200ms linear both}
+html.shine .hero-copy h1 .leaf-text{background-image:var(--sheen),var(--leaf-text)}
+html.shine .hero-copy .btn::after{opacity:1;animation:sheen-btn 1200ms linear both}
+html.shine .hero-copy .btn:hover::after,html.shine .hero-copy .btn:focus-visible::after{animation:sheen-hover 600ms linear both}
+html.shine .hero .frame-svg .glint{animation:glint 1200ms linear forwards}
+/* skip: everything snaps to rest in one frame (transition:none cancels anything still in flight) */
+html.cue-skip body,html.cue-skip .masthead,html.cue-skip .hero,html.cue-skip .hero *,html.cue-skip .hero *::before,html.cue-skip .hero *::after{transition:none !important;animation-duration:0ms !important}
+
+/* ---------- Act II: offerings ---------- */
 .offerings{padding-block:clamp(64px,10vw,140px)}
 .offerings .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(36px,5vw,64px)}
-.offering{display:flex;flex-direction:column;gap:18px;padding:8px 36px 0 0}
-.offering+.offering{border-left:var(--rule);padding-inline:36px}
-.offering:last-child{padding-right:0;border-left-color:var(--aqua)}
-.numeral{font-family:var(--display);font-style:italic;font-size:42px;line-height:1;color:var(--gold)}
-.offering:last-child .numeral{color:var(--aqua)}
-.offering h3{font-size:clamp(1.5rem,2.1vw,1.875rem);line-height:1.1;color:#FFFFFF}
+.offering{position:relative;display:flex;flex-direction:column;gap:18px;padding:8px 36px 0 0}
+.offering+.offering{padding-inline:36px}
+.offering:last-child{padding-right:0}
+.offering+.offering::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--leaf-y)}
+.offering:last-child::before{background:var(--aqua-live);box-shadow:0 0 12px rgba(61,224,204,.25)}
+.numeral{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(3.5rem,5vw,4rem);line-height:1;font-variation-settings:"opsz" 96}
+.offering:nth-child(2) .numeral.on>.leaf-text{animation-delay:90ms}
+.offering:nth-child(3) .numeral.on>.leaf-text{animation-delay:180ms}
+.offering:last-child .numeral{color:var(--aqua-live);text-shadow:0 0 24px rgba(61,224,204,.35)}
+.offering h3{font-size:clamp(1.625rem,2.35vw,1.875rem);line-height:1.1;color:#FFFFFF}
 .offering p{font-size:clamp(16px,1.2vw,17px);line-height:1.7}
-.offering .stat{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--aqua-light)}
+.offering .stat{display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap;border-top:1px solid rgba(61,224,204,.45);padding-top:14px;margin-top:6px}
+.stat-num{font-family:var(--display);font-weight:500;font-size:clamp(3rem,5.6vw,4.5rem);line-height:1;letter-spacing:-.01em;font-variation-settings:"opsz" 96}
 
-/* ---------- selected rooms (black as accent) ---------- */
-.rooms{background:var(--ebony);border-top:var(--rule);border-bottom:var(--rule);padding-block:clamp(56px,8vw,120px)}
+/* ---------- Act III: selected rooms, the lacquer slab (black as accent) ---------- */
+.rooms{
+  position:relative;background:var(--gloss),var(--ebony);
+  box-shadow:var(--shadow-slab-up),var(--shadow-slab-down);
+  border-top:1px solid rgba(255,255,255,.05);padding-block:clamp(56px,8vw,120px);
+}
+/* top is measured from the padding edge, inside the 1px border, so -2px puts the leaf rule
+   directly above the highlight: rule, highlight, ebony, contiguous */
+.rooms::before{content:"";position:absolute;left:0;right:0;top:-2px;height:1px;background:var(--leaf-x)}
+.rooms::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;pointer-events:none;background:linear-gradient(to top,rgba(61,224,204,.10),transparent);opacity:0}
+.rooms.on::after,html:not(.js) .rooms::after{opacity:1;transition:opacity 900ms var(--ease-inout)}
 .rooms .wrap{display:grid;grid-template-columns:320px minmax(0,1fr);gap:clamp(32px,5vw,64px)}
-.rooms h2{font-weight:400;font-style:italic;font-size:clamp(2rem,3.2vw,2.75rem);line-height:1.05;color:#FFFFFF}
+.rooms h2{font-weight:400;font-style:italic;font-size:clamp(2rem,3.4vw,2.75rem);line-height:1.05;color:#FFFFFF}
 .rooms .head{display:flex;flex-direction:column;gap:16px}
 .rooms ul{list-style:none;margin:0;padding:8px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 44px}
 .rooms li{
@@ -178,38 +440,32 @@ a{color:var(--aqua-light)}
   line-height:1.6;color:var(--gold-light);padding-top:14px;border-top:1px solid rgba(201,162,39,.4);
 }
 
-/* ---------- framed call to action ---------- */
+/* ---------- the curtain call: "Let's find your stage." ---------- */
 .curtain{padding-block:clamp(64px,10vw,140px)}
-.curtain .outer{border:var(--rule);padding:10px}
+.curtain .outer{padding:1px;background:var(--leaf)}
+.curtain .mat{padding:10px;background:var(--lapis)}
 .curtain .inner{
-  border:1px solid rgba(47,199,182,.5);
+  position:relative;isolation:isolate;border:1px solid rgba(61,224,204,.5);box-shadow:0 0 24px rgba(61,224,204,.12);
   padding:clamp(48px,8vw,120px) clamp(20px,4vw,64px);
   display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center;
-  background:radial-gradient(ellipse 44% 84% at 50% 0%,rgba(47,199,182,.14),rgba(10,26,60,0) 74%);
 }
-.curtain h2{font-size:clamp(2.4rem,6vw,5.25rem);line-height:1;color:#FFFFFF}
+.curtain .inner::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 44% 70% at 50% 100%,rgba(255,241,214,.12),transparent 72%);opacity:.33}
+.curtain.on .inner::before,html:not(.js) .curtain .inner::before{opacity:1;transition:opacity 1200ms var(--ease-inout)}
+.curtain h2{font-size:clamp(2.625rem,6.56vw,5.25rem);font-weight:500;line-height:1;letter-spacing:-.01em;color:#FFFFFF}
+.curtain h2 .dot{color:var(--gold)}
 .curtain p{font-size:clamp(17px,1.5vw,20px)}
 .curtain .btn{margin-top:10px}
 
-/* ---------- about ---------- */
+/* ---------- About, Act I: portrait and biography ---------- */
 .bio{
   padding-block:clamp(48px,7vw,96px) clamp(64px,10vw,140px);
   display:grid;grid-template-columns:minmax(0,600px) minmax(0,1fr);gap:clamp(36px,6vw,96px);
-  background:radial-gradient(ellipse 32% 55% at 24% -4%,rgba(201,162,39,.14),rgba(10,26,60,0) 80%);
+  background:radial-gradient(ellipse 32% 55% at 24% -4%,rgba(201,162,39,.14),transparent 80%);
 }
-.bio .frame{aspect-ratio:600/820}
+.bio .framed{aspect-ratio:600/820;align-self:start}
 .bio .text{display:flex;flex-direction:column;gap:clamp(20px,2.4vw,32px);padding-top:clamp(0px,2vw,40px)}
-.bio h1{font-size:clamp(4.5rem,10.5vw,9.5rem);line-height:.9;letter-spacing:-.02em;color:#FFFFFF}
-.bio .stand{font-family:var(--display);font-style:italic;font-size:clamp(1.5rem,2.5vw,2.125rem);line-height:1.25;color:var(--gold-light)}
-.placeholder{
-  border:1px dashed var(--aqua);padding:clamp(22px,3vw,32px) clamp(22px,3vw,36px);
-  display:flex;flex-direction:column;gap:16px;background:rgba(47,199,182,.05);
-}
-.placeholder .meta{
-  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--aqua-light);
-}
-.placeholder p{font-size:clamp(16px,1.3vw,18px);line-height:1.75;color:var(--cream-dim)}
+.bio h1{font-size:clamp(4.5rem,11.9vw,9.5rem);font-weight:400;line-height:.9;letter-spacing:-.02em;color:#FFFFFF;font-variation-settings:"opsz" 72}
+.bio .stand{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.5rem,2.65vw,2.125rem);line-height:1.25;color:var(--gold-light);font-variation-settings:"opsz" 34}
 .bio-body{display:flex;flex-direction:column;gap:20px;max-width:64ch}
 .bio-body p{font-size:clamp(16px,1.2vw,17.5px);line-height:1.78;color:var(--cream)}
 .bio-body p.lead{font-size:clamp(17px,1.45vw,20px);line-height:1.62;color:var(--gold-light)}
@@ -221,7 +477,7 @@ a{color:var(--aqua-light)}
   font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.22em;
   text-transform:uppercase;color:var(--aqua);transition:color .2s;
 }
-.bio-toggle:hover{color:var(--aqua-light)}
+.bio-toggle:hover{color:var(--aqua-glow)}
 .bio-toggle .lbl{border-bottom:1px solid currentColor;padding-bottom:3px}
 .bio-toggle .chev{
   width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
@@ -229,117 +485,156 @@ a{color:var(--aqua-light)}
 }
 .bio-toggle[aria-expanded="true"] .chev{transform:rotate(-135deg);margin-top:3px}
 
-.stages{padding-block:clamp(64px,10vw,140px);border-top:var(--rule)}
+/* ---------- About, Act II: two stages ---------- */
+.stages{position:relative;padding-block:clamp(64px,10vw,140px)}
+.stages::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--leaf-x)}
 .stages .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(36px,5.5vw,80px);margin-top:clamp(36px,5vw,64px)}
 .stage{display:flex;flex-direction:column;gap:24px}
-.stage .shot{height:clamp(240px,26vw,380px);overflow:hidden}
-.stage .shot img{width:100%;height:100%;object-fit:cover}
-.stage.broadway .shot{border:1px solid var(--gold)}
-.stage.room .shot{border:1px solid var(--aqua)}
-.stage h3{font-size:clamp(1.9rem,3vw,2.75rem);line-height:1.05;color:#FFFFFF}
+.stage .shot{height:clamp(240px,26vw,380px);padding:1px}
+.stage .shot img{width:100%;height:100%;object-fit:cover;filter:contrast(1.04) saturate(1.04)}
+.stage.broadway .shot{background:var(--leaf);box-shadow:0 0 28px rgba(201,162,39,.22)}
+.stage.room .shot{background:var(--aqua-live);box-shadow:0 0 28px rgba(61,224,204,.30);max-width:620px}
+.stage h3{font-size:clamp(1.875rem,3.4vw,2.75rem);line-height:1.05;letter-spacing:-.01em;color:#FFFFFF}
 .stage p{font-size:clamp(16px,1.4vw,19px);line-height:1.7;max-width:560px}
 
+/* ---------- About, Act III: watch ---------- */
 .watch{padding-bottom:clamp(64px,10vw,140px)}
-.watch a{
-  display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
-  border:var(--rule);background:var(--ebony);text-decoration:none;color:var(--cream);transition:border-color .2s;
-}
-.watch a:hover,.watch a:focus-visible{border-color:var(--aqua)}
-.watch .shot{position:relative;aspect-ratio:16/9;border-right:var(--rule);overflow:hidden}
-.watch .shot img{width:100%;height:100%;object-fit:cover}
-.watch .scrim{position:absolute;inset:0;background:var(--ground);opacity:.45;pointer-events:none}
+.watch a{display:block;padding:1px;background:var(--leaf);text-decoration:none;color:var(--cream);transition:box-shadow .2s}
+.watch a:hover,.watch a:focus-visible{background:var(--aqua-live);box-shadow:0 0 24px rgba(61,224,204,.25)}
+.watch .card-in{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);background:var(--gloss),var(--ebony)}
+.watch .shot{position:relative;aspect-ratio:16/9;overflow:hidden}
+.watch .shot::after{content:"";position:absolute;top:0;bottom:0;right:0;width:1px;background:var(--leaf-y)}
+.watch .shot img{width:100%;height:100%;object-fit:cover;filter:contrast(1.04) saturate(1.04)}
+.watch .scrim{position:absolute;inset:0;background:var(--lapis);opacity:.45;pointer-events:none}
 .watch .play{
   position:absolute;left:50%;top:50%;width:96px;height:96px;margin:-48px 0 0 -48px;
-  border:1px solid var(--aqua);border-radius:50%;
+  border:1px solid var(--aqua-live);border-radius:50%;
+  box-shadow:0 0 24px rgba(61,224,204,.25),inset 0 0 12px rgba(61,224,204,.15);
   display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2;
 }
-.watch .play span{width:0;height:0;border-left:22px solid var(--aqua);border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px}
+.watch .play span{width:0;height:0;border-left:22px solid var(--aqua-live);border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px}
 .watch .said{padding:clamp(32px,5vw,64px) clamp(24px,4.4vw,56px);display:flex;flex-direction:column;justify-content:center;gap:20px}
-.watch h2{font-size:clamp(2.4rem,5vw,4.5rem);line-height:1;color:#FFFFFF}
-.watch .handle{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--aqua-light)}
+.watch h2{font-size:clamp(2.5rem,5vw,4rem);line-height:1;letter-spacing:-.01em;color:#FFFFFF;font-variation-settings:"opsz" 64}
+.watch .handle{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--aqua-glow)}
 
-/* ---------- connect ---------- */
+/* ---------- Connect: the quote, two seams ---------- */
 .quote{
   padding-block:clamp(64px,10vw,150px) clamp(56px,9vw,140px);
-  background:radial-gradient(ellipse 46% 76% at 50% -8%,rgba(47,199,182,.18),rgba(201,162,39,.05) 52%,rgba(10,26,60,0) 82%);
+  background:radial-gradient(ellipse 46% 76% at 50% -8%,rgba(61,224,204,.16),rgba(201,162,39,.05) 52%,transparent 82%);
   display:flex;flex-direction:column;align-items:center;gap:clamp(32px,5vw,72px);
 }
 .diamond-rule{width:100%;display:flex;align-items:center;gap:20px}
-.diamond-rule .line{flex:1;height:1px;background:var(--gold)}
-.diamond-rule .d{width:9px;height:9px;border:1px solid var(--aqua);transform:rotate(45deg)}
+.diamond-rule .line{flex:1;height:1px}
+.diamond-rule .line:first-child{background:var(--leaf-x)}
+.diamond-rule .line:last-child{background:linear-gradient(90deg,#3DE0CC,#1A8F84)}
+.diamond-rule .d{width:9px;height:9px;border:1px solid var(--aqua-live);transform:rotate(45deg);box-shadow:0 0 10px rgba(61,224,204,.5)}
 .quote blockquote{
   margin:0;max-width:1180px;text-align:center;
-  font-family:var(--display);font-style:italic;font-weight:400;
-  font-size:clamp(2.5rem,8.6vw,7.75rem);line-height:1.02;letter-spacing:-.015em;color:#FFFFFF;
+  font-family:var(--display);font-style:italic;font-weight:400;font-variation-settings:"opsz" 96;
+  font-size:clamp(2.75rem,9.7vw,7.75rem);line-height:1.02;letter-spacing:-.02em;color:#FFFFFF;
 }
-.quote blockquote .mark{color:var(--gold)}
+.quote blockquote .mark.close{color:var(--aqua-light);text-shadow:0 0 24px rgba(61,224,204,.35)}
 
+/* ---------- Connect, Act II: form and aside ---------- */
 .connect{
   padding-block:clamp(24px,4vw,40px) clamp(64px,10vw,150px);
   display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:clamp(36px,6vw,96px);align-items:start;
 }
-.connect h1{font-size:clamp(2.4rem,5vw,4.5rem);line-height:1;color:#FFFFFF}
+.connect h1{font-size:clamp(2.5rem,5.6vw,4.5rem);line-height:1;letter-spacing:-.01em;color:#FFFFFF;font-variation-settings:"opsz" 72}
 .form-head{display:flex;flex-direction:column;gap:18px;margin-bottom:clamp(28px,4vw,40px)}
-form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 24px;border-top:var(--rule);padding-top:clamp(28px,4vw,40px)}
+form.enquiry{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 24px;padding-top:clamp(28px,4vw,40px)}
+form.enquiry::before,.thanks::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--leaf-x)}
 .field{display:flex;flex-direction:column;gap:10px}
 .field.full{grid-column:1 / -1}
 .field label{font-size:11px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--aqua)}
 .field label .opt{color:var(--cream-dim);font-weight:500}
 .field input,.field select,.field textarea{
-  width:100%;background:var(--panel);border:1px solid var(--field-line);border-radius:0;
+  width:100%;background:var(--lapis-panel);border:1px solid var(--field-line);border-radius:0;
   color:var(--cream);font-family:var(--body);font-size:17px;padding:0 18px;
   outline:none;color-scheme:dark;transition:border-color .15s,box-shadow .15s;
 }
 .field input,.field select{height:56px}
 .field textarea{min-height:200px;padding:16px 18px;line-height:1.6;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--aqua);box-shadow:0 0 0 1px var(--aqua)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--aqua-live);box-shadow:0 0 0 1px var(--aqua-live),0 0 18px rgba(61,224,204,.25)}
 .select-shell{position:relative}
 .select-shell select{appearance:none;-webkit-appearance:none;padding-right:48px;cursor:pointer}
 .select-shell .chev{
   position:absolute;right:20px;top:50%;width:8px;height:8px;margin-top:-6px;
-  border-right:1px solid var(--aqua);border-bottom:1px solid var(--aqua);transform:rotate(45deg);pointer-events:none;
+  border-right:1px solid var(--aqua-live);border-bottom:1px solid var(--aqua-live);transform:rotate(45deg);pointer-events:none;
 }
 .submit-row{grid-column:1 / -1;padding-top:8px}
-.thanks{border-top:var(--rule);padding-top:clamp(28px,4vw,40px);display:flex;flex-direction:column;gap:20px;align-items:flex-start}
-.thanks .said{font-family:var(--display);font-style:italic;font-size:clamp(1.75rem,3.4vw,2.5rem);color:#FFFFFF}
+.thanks{position:relative;padding-top:clamp(28px,4vw,40px);display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.thanks .said{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.75rem,3.1vw,2.5rem);line-height:1.15;color:#FFFFFF;font-variation-settings:"opsz" 48}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.thanks .hair{transform-origin:left;animation:draw 500ms var(--ease-inout) both}
 
 .aside{display:flex;flex-direction:column;gap:26px;padding-top:clamp(0px,9vw,150px)}
-.card{border:var(--rule);padding:8px;background:var(--ebony)}
-.card .inner{border:1px solid rgba(47,199,182,.45);padding:clamp(28px,4vw,40px) clamp(24px,3.4vw,36px);display:flex;flex-direction:column;gap:20px}
-.card h2{font-size:clamp(1.75rem,2.8vw,2.375rem);line-height:1.08;color:#FFFFFF}
+.card{padding:1px;background:var(--leaf)}
+.card .mat{padding:8px;background:var(--gloss),var(--ebony)}
+.card .inner{border:1px solid rgba(61,224,204,.45);padding:clamp(28px,4vw,40px) clamp(24px,3.4vw,36px);display:flex;flex-direction:column;gap:20px}
+.card h2{font-size:clamp(1.875rem,3.4vw,2.75rem);line-height:1.05;letter-spacing:-.01em;color:#FFFFFF}
 .card .btn{margin-top:8px;width:100%}
 .links{border:1px solid rgba(156,122,36,.6);padding:24px clamp(24px,3.4vw,36px);display:flex;flex-direction:column}
-.links .cap{font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--aqua);padding-bottom:10px}
+.links .cap{padding-bottom:12px}
 .links a{
   min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;
   border-top:1px solid rgba(156,122,36,.35);color:var(--cream);text-decoration:none;font-size:17px;transition:color .2s;
 }
-.links a:hover{color:var(--aqua-light)}
-.links a .arw{color:var(--aqua)}
+.links a:hover{color:var(--aqua-glow)}
+.links a .arw{color:var(--aqua-live)}
 
-/* ---------- footer ---------- */
-.foot{border-top:var(--rule);background:var(--ebony)}
+/* ---------- footer: one bare bulb left burning on an empty stage ---------- */
+.foot{position:relative;background:var(--gloss),linear-gradient(180deg,#12100E,#1A1612);border-top:1px solid rgba(255,255,255,.05)}
+.foot::before{content:"";position:absolute;left:0;right:0;top:-2px;height:1px;background:var(--leaf-x)} /* -2px: above the border, see .rooms::before */
 .foot-in{
   max-width:1440px;margin:0 auto;padding:clamp(36px,5vw,56px) var(--gutter) clamp(40px,5.5vw,64px);
   display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;
 }
-.foot .id{display:flex;flex-direction:column;gap:12px}
-.foot .id .name{font-family:var(--display);font-size:15px;font-weight:500;letter-spacing:.3em;color:#FFFFFF;text-decoration:none}
+.foot .id{display:flex;align-items:flex-start;gap:20px}
+.foot .id .col{display:flex;flex-direction:column;gap:12px}
+/* 44px hit area on the wordmark link; the negative block margins keep the visual block,
+   the column height and the ghost light's alignment exactly where they were */
+.foot .id .name{font-family:var(--display);font-size:15px;font-weight:500;letter-spacing:.3em;color:#FFFFFF;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;margin-block:-10px}
 .foot .id .legal{font-size:15px;color:var(--cream-dim)}
 .foot nav{display:flex;gap:clamp(20px,3vw,40px);flex-wrap:wrap}
-.foot nav a{font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--cream);text-decoration:none;padding:12px 0;transition:color .2s}
-.foot nav a:hover{color:var(--aqua-light)}
+.foot nav a{font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--cream);text-decoration:none;display:inline-flex;align-items:center;min-height:44px;padding:0;transition:color .2s}
+.foot nav a:hover{color:var(--aqua-glow)}
 .foot nav a.yt{color:var(--aqua-light)}
 .foot nav a.yt:hover{color:#FFFFFF}
 
-/* ---------- breakpoints ---------- */
+/* ---------- breakpoints (v2 cut points 1200, 1100, 900, 600 kept; the offerings are the four
+   column programme row from 1201px up as specified and two by two at 1200 and below; between 1201
+   and 1440 the measure is held by 28px column gutters and 16px copy, about 32 to 38 characters
+   a line) ---------- */
+@media (min-width:768px){
+  .hero-copy h1,.bio h1{font-variation-settings:"opsz" 96}
+}
+@media (min-width:601px) and (max-width:900px){
+  .hero-copy h1{font-size:clamp(3rem,8.3vw,4rem)}
+  .wing-label{font-size:10px}
+}
+/* short desktop viewports (a 1440 x 900 or 1280 x 800 laptop after browser chrome): with the bridge
+   capped by height the copy column becomes the taller cell, so its rhythm tightens and the headline
+   scales with height (20.4vh - 88px leaves the apron about 20px above the viewport bottom with a
+   three line lede: 78px at 815 tall, 58px at 715). At 921px and taller the spec sizes already fit. */
+@media (min-width:901px) and (max-height:920px){
+  .hero-copy{gap:20px;padding-bottom:32px}
+  .hero-copy h1{font-size:clamp(2.875rem,min(6.25vw,20.4vh - 88px),5.25rem)}
+}
+@media (min-width:1201px) and (max-width:1440px){
+  .offering{padding-right:28px}
+  .offering+.offering{padding-inline:28px}
+  .offering:last-child{padding-right:0}
+  .offering p{font-size:16px;line-height:1.65}
+}
 @media (max-width:1200px){
-  .offerings .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 0}
+  .offerings .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .offering{padding:32px 32px 32px 0;border-top:1px solid rgba(156,122,36,.5)}
   .offering+.offering{padding-inline:32px}
   .offering:nth-child(1),.offering:nth-child(2){border-top:none}
-  .offering:nth-child(odd){border-left:none;padding-left:0}
-  .offering:last-child{border-left-color:var(--gold-deep)}
+  .offering:nth-child(odd){padding-left:0}
+  .offering:nth-child(odd)::before{display:none}
+  .offering:last-child::before{background:var(--leaf-y);box-shadow:none}
 }
 @media (max-width:1100px){
   .connect{grid-template-columns:minmax(0,1fr) 340px}
@@ -350,22 +645,34 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
   .nav{display:none}
   .menu-btn{display:inline-flex;align-items:center;justify-content:center}
   .drawer[data-open="true"]{display:block}
-  .hero-in{grid-template-columns:minmax(0,1fr);padding-bottom:0}
-  .bridge{max-width:560px;margin-inline:auto}
+  .hero::before{background:
+    radial-gradient(ellipse 40% 14% at 18% 50%,rgba(201,162,39,.16),transparent 70%),
+    radial-gradient(ellipse 40% 14% at 82% 50%,rgba(61,224,204,.18),transparent 70%),
+    radial-gradient(ellipse 70% 50% at 50% 25%,#16366A 0%,#0A1A3C 52%,#050C1F 100%)}
+  /* stacked: the stage edge runs under the bridge, the copy sits in the house below it */
+  .hero::after{display:none}
+  .bridge::after{content:"";position:absolute;left:50%;bottom:0;height:1px;width:100vw;transform:translateX(-50%);background:var(--leaf-x);z-index:1}
+  .hero-in{grid-template-columns:minmax(0,1fr);gap:24px;padding-top:40px}
+  .bridge{order:-1;max-width:560px;margin-inline:auto}
+  .hero-copy{max-width:560px;padding-bottom:48px}
   .offerings .grid{grid-template-columns:minmax(0,1fr)}
-  .offering,.offering+.offering{padding:32px 0;border-left:none;border-top:1px solid rgba(156,122,36,.5)}
-  .offering:first-child{border-top:none;padding-top:8px}
+  .offering,.offering+.offering{padding:32px 0;border-top:none}
+  .offering::before,.offering+.offering::before,.offering:nth-child(odd)::before{content:"";display:block;position:absolute;left:0;right:0;top:0;bottom:auto;width:auto;height:1px;background:var(--leaf-x);box-shadow:none}
+  .offering:first-child{padding-top:8px}
+  .offering:first-child::before{display:none}
+  .offering:last-child::before{background:var(--leaf-x);box-shadow:none}
   .rooms .wrap{grid-template-columns:minmax(0,1fr)}
   .rooms ul{grid-template-columns:minmax(0,1fr);gap:0}
   .rooms li{padding-block:13px}
   .bio{grid-template-columns:minmax(0,1fr)}
-  .bio .frame{max-width:520px}
+  .bio .framed{max-width:520px}
   .stages .grid{grid-template-columns:minmax(0,1fr)}
-  .watch a{grid-template-columns:minmax(0,1fr)}
-  .watch .shot{border-right:none;border-bottom:var(--rule)}
+  .watch .card-in{grid-template-columns:minmax(0,1fr)}
+  .watch .shot::after{top:auto;bottom:0;left:0;right:0;width:auto;height:1px;background:var(--leaf-x)}
   .connect{grid-template-columns:minmax(0,1fr)}
   .aside{padding-top:0}
   .foot-in{flex-direction:column;align-items:stretch}
+  .foot .id{flex-direction:column;gap:16px}
   .foot nav{flex-direction:column;gap:0}
   .foot nav a{min-height:48px;display:flex;align-items:center;border-top:1px solid rgba(156,122,36,.35)}
   .foot nav a:last-child{border-bottom:1px solid rgba(156,122,36,.35)}
@@ -375,20 +682,47 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
   .masthead-in{min-height:68px}
   .wordmark{letter-spacing:.2em}
   form.enquiry{grid-template-columns:minmax(0,1fr)}
-  .bridge{aspect-ratio:350/470;max-width:none}
-  .bridge .figure{width:58%;height:85%}
-  .bridge .wing{width:46%;height:26%}
+  .field textarea{min-height:180px}
+  .bridge{aspect-ratio:35/48;max-width:none}
+  .bridge .frame{left:22%;top:2.917%;width:56%;height:83.333%;padding:9px}
+  .wing{width:45.714%;height:25.417%;bottom:4.167%}
   .wing-label{display:none}
-  .quote blockquote{font-size:clamp(2.25rem,11vw,3.5rem)}
+  .foots{height:4.167%;padding-inline:2%}
+  .foots .bulb:nth-child(1),.foots .bulb:nth-child(2),.foots .bulb:nth-child(10),.foots .bulb:nth-child(11){display:none}
+  .spot{top:-66.1%}
+  .bulb{flex-basis:8px;width:8px;height:8px}
+  .bulb::before{inset:-1.5px}
+  .bulb::after{box-shadow:0 0 1px 1px rgba(255,236,190,.9),0 0 4px 1px rgba(255,200,92,.65),0 0 9px 3px rgba(232,137,30,.32),0 0 20px 7px rgba(232,137,30,.12)}
+  .bulb.aqua::after{box-shadow:0 0 1px 1px rgba(214,255,248,.9),0 0 4px 1px rgba(61,224,204,.65),0 0 9px 3px rgba(47,199,182,.32),0 0 20px 7px rgba(47,199,182,.12)}
+  .bulb.centre::after{box-shadow:0 0 1px 1px rgba(255,255,255,.95),0 0 5px 2px rgba(255,236,190,.7),0 0 10px 4px rgba(61,224,204,.25),0 0 24px 9px rgba(232,137,30,.14)}
+  .bulb.ghost{flex-basis:10px;width:10px;height:10px}
+  .numeral{font-size:3.5rem}
+  .curtain .mat{padding:8px}
+  .watch .play{width:72px;height:72px;margin:-36px 0 0 -36px}
+  .quote blockquote{font-variation-settings:"opsz" 48}
   .btn{width:100%}
   .hero-copy .btn{align-self:stretch}
 }
+
+/* ---------- reduced motion: the composed resting page, nothing travels ---------- */
 @media (prefers-reduced-motion:reduce){
-  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important;animation-iteration-count:1 !important}
+  .house{display:none}
+  .bulb::after{animation:none;opacity:.85}
+  .act .line::after,.curtain .inner::before,.rooms::after,.thanks .hair{transition:none;animation:none;transform:none;opacity:1}
+  .leaf-text.on,.on>.leaf-text,.btn::after,html.shine .hero-copy .hair,html.shine .hero-copy h1 .leaf-text,html.shine .hero-copy .btn::after,html.shine .hero .frame-svg .glint{animation:none}
+  .spot-peak{display:none}
+}
+
+/* ---------- no background-clip:text: flat bright gold, no sheen, no stamp (placed last so it outbids the sheen rules) ---------- */
+@supports not (background-clip:text){
+  .leaf-text,.leaf-text.on,.on>.leaf-text,html.shine .hero-copy h1 .leaf-text{background:none;color:#E6C25A;-webkit-text-fill-color:#E6C25A;animation:none}
+  .stamp{filter:none}
 }
 </style>
 </head>
 <body>
+<div class="house" aria-hidden="true"></div>
 <header class="masthead">
   <div class="masthead-in">
     <a class="wordmark" href="#/" data-link>BROADWAY CONFIDENCE<span class="reg">&reg;</span></a>
@@ -416,46 +750,71 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
     <section class="hero">
       <div class="hero-in">
         <div class="hero-copy">
-          <p class="eyebrow">Lisa Nicole Wilkerson</p>
-          <h1>The Bridge between <em>Broadway</em> and the Boardroom<span class="tm">&trade;</span></h1>
-          <hr class="hair">
+          <p class="eyebrow">Act I &middot; Lisa Nicole Wilkerson</p>
+          <h1><span class="w">The</span> <span class="w">Bridge</span> <span class="w">between</span> <span class="w stamp"><em class="leaf-text">Broadway</em></span> <span class="w">and</span> <span class="w">the</span> <span class="w"><span class="bd">Boardroom</span><span class="tm">&trade;</span></span></h1>
+          <hr class="hair" aria-hidden="true">
           <p class="lede">Career enhancing leadership and communication coaching, whether you lead a team or a performance.</p>
           <a class="btn" href="#/connect" data-link>Book a consultation</a>
         </div>
 
+        <!-- The bridge: her framed photograph, the theatre over its bottom left corner,
+             the boardroom over its bottom right, footlights along the apron. -->
         <div class="bridge">
-          <div class="framed figure">
+          <div class="spot spot-rest" aria-hidden="true"></div>
+          <div class="framed frame">
             <div class="plate">
-              <img src="assets/lisa-hero.jpg" alt="Lisa Nicole Wilkerson standing full length in a red dress">
+              <img src="assets/lisa-hero.jpg" width="785" height="1100" fetchpriority="high" alt="Lisa Nicole Wilkerson standing full length in a red dress">
+              <div class="dim" aria-hidden="true"></div>
+              <div class="spot-peak" aria-hidden="true"></div>
             </div>
+            <svg class="frame-svg" viewBox="0 0 312 672" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="leafL" gradientUnits="userSpaceOnUse" x1="0" y1="672" x2="156" y2="0">
+                  <stop offset="0" stop-color="#6E5416"/><stop offset=".3" stop-color="#C9A227"/><stop offset=".55" stop-color="#F6E7B4"/><stop offset=".8" stop-color="#C9A227"/><stop offset="1" stop-color="#9C7A24"/>
+                </linearGradient>
+                <linearGradient id="leafR" gradientUnits="userSpaceOnUse" x1="312" y1="672" x2="156" y2="0">
+                  <stop offset="0" stop-color="#6E5416"/><stop offset=".3" stop-color="#C9A227"/><stop offset=".55" stop-color="#D9E6C4"/><stop offset=".8" stop-color="#C9A227"/><stop offset="1" stop-color="#9C7A24"/>
+                </linearGradient>
+              </defs>
+              <path class="rail l" d="M156 671.25H.75V.75H156" pathLength="1000" vector-effect="non-scaling-stroke"/>
+              <path class="rail r" d="M156 671.25H311.25V.75H156" pathLength="1000" vector-effect="non-scaling-stroke"/>
+              <path class="glint l" d="M156 671.25H.75V.75H156" pathLength="1000" vector-effect="non-scaling-stroke"/>
+              <path class="glint r" d="M156 671.25H311.25V.75H156" pathLength="1000" vector-effect="non-scaling-stroke"/>
+              <path class="corner" d="M11 21V11h10M291 11h10v10M11 651v10h10M301 651v10h-10" vector-effect="non-scaling-stroke"/>
+              <circle class="ping" cx="156" cy=".75" r="3"/>
+            </svg>
           </div>
           <div class="wing left">
-            <img src="assets/theatre-gilded.jpg" alt="A gilded Broadway proscenium with the red curtain down">
+            <img src="assets/theatre-gilded.jpg" width="1500" height="1198" alt="A gilded Broadway proscenium with the red curtain down">
           </div>
           <div class="wing right">
-            <img src="assets/boardroom.jpg" alt="A boardroom with tall windows, natural light and plants">
+            <img src="assets/boardroom.jpg" width="728" height="408" alt="A boardroom with tall windows, natural light and plants">
           </div>
           <div class="wing-label left">Broadway</div>
           <div class="wing-label right">Boardroom</div>
+          <div class="foots" aria-hidden="true">
+            <i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb centre"></i><i class="bulb aqua"></i><i class="bulb aqua"></i><i class="bulb aqua"></i><i class="bulb aqua"></i><i class="bulb aqua"></i>
+          </div>
+          <div class="apron-seam" aria-hidden="true"></div>
         </div>
       </div>
     </section>
 
     <section class="offerings wrap">
-      <div class="act"><span>Act II</span><span class="line"></span><span>Offerings</span></div>
+      <h2 class="act"><span>Act II</span> <span class="line" aria-hidden="true"></span> <span>Offerings</span></h2>
       <div class="grid">
         <article class="offering">
-          <div class="numeral" aria-hidden="true">i.</div>
+          <div class="numeral stamp" aria-hidden="true"><span class="leaf-text">i.</span></div>
           <h3>For business leaders</h3>
           <p>I support business leaders in becoming more strategic, self-aware and confident communicators using &ldquo;Broadway Basics<span class="tm">&trade;</span>&rdquo; to strengthen their leadership presence.</p>
         </article>
         <article class="offering">
-          <div class="numeral" aria-hidden="true">ii.</div>
+          <div class="numeral stamp" aria-hidden="true"><span class="leaf-text">ii.</span></div>
           <h3>For artists</h3>
           <p>I support aspiring and established artists in understanding what &ldquo;being&rdquo; a business is specific to the performing arts industry, and how to navigate it effectively.</p>
         </article>
         <article class="offering">
-          <div class="numeral" aria-hidden="true">iii.</div>
+          <div class="numeral stamp" aria-hidden="true"><span class="leaf-text">iii.</span></div>
           <h3>In the room</h3>
           <p>I provide targeted, interactive (and fun!) experiences for business leaders to learn and immediately apply strategies.</p>
         </article>
@@ -464,7 +823,7 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
           <div class="numeral" aria-hidden="true">iv.</div>
           <h3>From the stage</h3>
           <p>As a keynote speaker I provide concepts and clear-cut methods on achieving success, sharing personal stories, insights and calls to action with audiences across business, the arts, not-for-profit and sport.</p>
-          <p class="stat">Over 2,500 in one room</p>
+          <p class="stat"><span class="stat-cap">Over</span> <span class="stat-num stamp"><span class="leaf-text">2,500</span></span> <span class="stat-cap">in one room</span></p>
         </article>
       </div>
     </section>
@@ -472,19 +831,40 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
     <section class="rooms">
       <div class="wrap">
         <div class="head">
-          <div class="eyebrow">Act III</div>
+          <div class="eyebrow glow">Act III</div>
           <h2>Selected rooms</h2>
         </div>
-        <ul id="roomList"></ul>
+        <ul id="roomList">
+          <li>NYU Stern Executive Education</li>
+          <li>NYU Stern Office of Sustainability</li>
+          <li>NYU Stern BALA</li>
+          <li>Northwestern IMC</li>
+          <li>The Wharton School</li>
+          <li>Columbia SIPA</li>
+          <li>Council for Urban Professionals</li>
+          <li>Tokio Marine North America</li>
+          <li>Convergent</li>
+          <li>Downing Capital Group</li>
+          <li>Holistic Index</li>
+          <li>Broadway Inspirational Voices</li>
+          <li>The Performing Arts Project</li>
+          <li>Ekhaya Multi Arts Center, Durban</li>
+          <li>Broadway in South Africa</li>
+          <li>Opportunity Nation at the Apollo Theater</li>
+          <li>Horizons for Homeless Children</li>
+          <li>Howard University</li>
+        </ul>
       </div>
     </section>
 
     <section class="curtain wrap">
       <div class="outer">
-        <div class="inner">
-          <h2>Let&rsquo;s find your stage.</h2>
-          <p>Start with a twenty minute conversation.</p>
-          <a class="btn" href="#/connect" data-link>Book a consultation</a>
+        <div class="mat">
+          <div class="inner">
+            <h2>Let&rsquo;s find your stage<span class="dot">.</span></h2>
+            <p>Start with a twenty minute conversation.</p>
+            <a class="btn" href="#/connect" data-link>Book a consultation</a>
+          </div>
         </div>
       </div>
     </section>
@@ -495,18 +875,31 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
   <div class="page" id="page-about" hidden>
 
     <section class="bio wrap">
-      <div class="framed frame">
+      <div class="framed">
         <div class="plate">
-          <img src="assets/lisa-portrait.jpg" alt="Portrait of Lisa Nicole Wilkerson">
+          <img src="assets/lisa-portrait.jpg" width="1124" height="1400" loading="lazy" decoding="async" alt="Portrait of Lisa Nicole Wilkerson">
         </div>
+        <svg class="frame-svg" viewBox="0 0 600 820" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="leafL2" gradientUnits="userSpaceOnUse" x1="0" y1="820" x2="300" y2="0">
+              <stop offset="0" stop-color="#6E5416"/><stop offset=".3" stop-color="#C9A227"/><stop offset=".55" stop-color="#F6E7B4"/><stop offset=".8" stop-color="#C9A227"/><stop offset="1" stop-color="#9C7A24"/>
+            </linearGradient>
+            <linearGradient id="leafR2" gradientUnits="userSpaceOnUse" x1="600" y1="820" x2="300" y2="0">
+              <stop offset="0" stop-color="#6E5416"/><stop offset=".3" stop-color="#C9A227"/><stop offset=".55" stop-color="#D9E6C4"/><stop offset=".8" stop-color="#C9A227"/><stop offset="1" stop-color="#9C7A24"/>
+            </linearGradient>
+          </defs>
+          <path class="rail l" d="M300 819.25H.75V.75H300" pathLength="1000" vector-effect="non-scaling-stroke"/>
+          <path class="rail r" d="M300 819.25H599.25V.75H300" pathLength="1000" vector-effect="non-scaling-stroke"/>
+          <path class="corner" d="M11 21V11h10M579 11h10v10M11 799v10h10M589 799v10h-10" vector-effect="non-scaling-stroke"/>
+        </svg>
       </div>
       <div class="text">
         <p class="eyebrow">Act I &middot; Lisa Nicole Wilkerson</p>
         <h1>About</h1>
         <p class="stand">One foot on the stage. One foot in the boardroom.</p>
-        <hr class="hair">
+        <hr class="hair" aria-hidden="true">
         <!-- Biography supplied by Prof. Wilkerson, 28 September. Generated from
-             her .docx verbatim. Only changes: two double hyphens and one en dash
+             her .docx verbatim. Only changes: two double hyphens and one dash
              normalised to commas, and "Gershwin's" corrected to "Gershwins'".
              First paragraph always visible; the rest expand on request. -->
         <div class="bio-body">
@@ -528,15 +921,15 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
     </section>
 
     <section class="stages wrap">
-      <div class="act"><span>Act II</span><span class="line"></span><span>Two stages</span></div>
+      <h2 class="act"><span>Act II</span> <span class="line" aria-hidden="true"></span> <span>Two stages</span></h2>
       <div class="grid">
         <article class="stage broadway">
-          <div class="shot"><img src="assets/theatre-curtain.jpg" alt="A theatre auditorium with the red curtain closed"></div>
+          <div class="shot"><img src="assets/theatre-curtain.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="A theatre auditorium with the red curtain closed"></div>
           <h3>On Broadway</h3>
           <p>Award winning performer, dance captain and fight captain, with credits including The Gershwins&rsquo; Porgy and Bess, Motown the Musical and The Lion King.</p>
         </article>
         <article class="stage room">
-          <div class="shot"><img src="assets/boardroom.jpg" alt="A boardroom with tall windows, natural light and plants"></div>
+          <div class="shot"><img src="assets/boardroom.jpg" width="728" height="408" loading="lazy" decoding="async" alt="A boardroom with tall windows, natural light and plants"></div>
           <h3>In the classroom</h3>
           <p>Adjunct Assistant Professor of Management Communication at NYU Stern, and a facilitator for Executive Education participants and MBA candidates.</p>
         </article>
@@ -545,16 +938,18 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
 
     <section class="watch wrap">
       <a href="https://www.youtube.com/@BroadwayConfidence1" target="_blank" rel="noopener">
-        <div class="shot">
-          <img src="assets/theatre-gilded.jpg" alt="">
-          <span class="scrim"></span>
-          <span class="play"><span></span></span>
-        </div>
-        <div class="said">
-          <div class="eyebrow">Act III</div>
-          <h2>Watch</h2>
-          <p>Broadway Confidence on YouTube</p>
-          <p class="handle">@BroadwayConfidence1 &nearr;</p>
+        <div class="card-in">
+          <div class="shot">
+            <img src="assets/theatre-gilded.jpg" width="1500" height="1198" loading="lazy" decoding="async" alt="" aria-hidden="true">
+            <span class="scrim" aria-hidden="true"></span>
+            <span class="play" aria-hidden="true"><span></span></span>
+          </div>
+          <div class="said">
+            <div class="eyebrow glow">Act III</div>
+            <h2>Watch</h2>
+            <p>Broadway Confidence on YouTube</p>
+            <p class="handle">@BroadwayConfidence1 &nearr;</p>
+          </div>
         </div>
       </a>
     </section>
@@ -566,7 +961,7 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
 
     <section class="quote wrap">
       <div class="diamond-rule" aria-hidden="true"><span class="line"></span><span class="d"></span><span class="line"></span></div>
-      <blockquote><span class="mark">&ldquo;</span>Lisa Nicole is an experience.<span class="mark">&rdquo;</span></blockquote>
+      <blockquote><span class="mark stamp"><span class="leaf-text">&ldquo;</span></span>Lisa Nicole is an experience.<span class="mark close">&rdquo;</span></blockquote>
       <div class="diamond-rule" aria-hidden="true"><span class="line"></span><span class="d"></span><span class="line"></span></div>
     </section>
 
@@ -620,16 +1015,19 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
 
         <div class="thanks" id="thanks" hidden>
           <p class="said">Thank you. I will be in touch shortly.</p>
+          <hr class="hair" aria-hidden="true">
           <button class="btn-quiet" type="button" id="resetForm">Send another</button>
         </div>
       </div>
 
       <aside class="aside">
         <div class="card">
-          <div class="inner">
-            <h2>Rather just talk?</h2>
-            <p>Book a twenty minute consultation and we will work out whether this is the right fit.</p>
-            <a class="btn" href="https://calendar.app.google/Vdrt8xAb8rQWRGQh9" target="_blank" rel="noopener">Book 20 minutes</a>
+          <div class="mat">
+            <div class="inner">
+              <h2>Rather just talk?</h2>
+              <p>Book a twenty minute consultation and we will work out whether this is the right fit.</p>
+              <a class="btn" href="https://calendar.app.google/Vdrt8xAb8rQWRGQh9" target="_blank" rel="noopener">Book 20 minutes</a>
+            </div>
           </div>
         </div>
         <div class="links">
@@ -647,8 +1045,11 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
 <footer class="foot">
   <div class="foot-in">
     <div class="id">
-      <a class="name" href="#/" data-link>BROADWAY CONFIDENCE<span class="reg">&reg;</span></a>
-      <span class="legal">Broadway Confidence Coaching &amp; Consulting</span>
+      <i class="bulb ghost" aria-hidden="true"></i>
+      <div class="col">
+        <a class="name" href="#/" data-link>BROADWAY CONFIDENCE<span class="reg">&reg;</span></a>
+        <span class="legal">Broadway Confidence Coaching &amp; Consulting</span>
+      </div>
     </div>
     <nav aria-label="Footer">
       <a href="#/" data-link data-nav="home">Home</a>
@@ -663,8 +1064,114 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
 (function () {
   "use strict";
 
+  /* Gate: html.js first, so any state that waits on a script is gated behind it. */
+  var html = document.documentElement;
+  html.classList.add("js");
+
+  /* ---------- the cue: one orchestrated load, Home only, once per session ---------- */
+  var hero = document.querySelector(".hero");
+  var timers = [];
+  var done = false;
+  var SKIP_EVENTS = ["pointerdown", "keydown", "wheel", "touchstart"];
+
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+  function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+  function beat(c) { return function () { hero.classList.add(c); }; }
+  function remember() { try { sessionStorage.setItem("bc_cue", "1"); } catch (e) {} }
+  function unlisten() { SKIP_EVENTS.forEach(function (t) { window.removeEventListener(t, finish); }); }
+  /* html.shine gates the one specular pass (2000 to 3200). Its end states equal the resting rules,
+     so retiring the class is invisible, and with it gone nothing can replay when #page-home is
+     re-shown after About or Connect (display:none restarts CSS animations on every re-show). */
+  function retireShine() { html.classList.remove("shine"); }
+
+  /* skip, or the failsafe: everything snaps to its resting state in one frame */
+  function finish() {
+    if (done || html.classList.contains("no-cue")) return;
+    done = true;
+    timers.forEach(clearTimeout);
+    html.classList.add("cue-skip");
+    void hero.offsetWidth;
+    html.classList.remove("cue");
+    retireShine();
+    html.classList.add("no-cue");
+    requestAnimationFrame(function () { html.classList.remove("cue-skip"); });
+    remember();
+    unlisten();
+  }
+
+  function runCue() {
+    SKIP_EVENTS.forEach(function (t) { window.addEventListener(t, finish, { passive: true }); });
+    Promise.race([document.fonts ? document.fonts.ready : wait(0), wait(600)]).then(function () {
+      if (done) return;
+      /* every beat, the natural end and the failsafe share this one clock ("go") */
+      at(300, beat("s-frame"));
+      at(350, beat("s-house"));
+      at(500, beat("s-spot"));    /* the follow spot sweeps in and lands on her face at 1400, cyclorama still dark */
+      at(1100, beat("s-wl"));
+      at(1150, beat("s-ping"));
+      at(1250, beat("s-wr"));
+      at(1300, beat("s-foot"));
+      at(1400, beat("s-eye"));
+      at(1450, beat("s-plate"));  /* a beat after the spot lands, the cyclorama comes up under it, landing at 2350 */
+      at(1600, beat("s-labels"));
+      at(1750, beat("s-h1"));     /* the words rise over the lifting scrim; 50ms stagger, last word in by 2550 */
+      at(1900, beat("s-hair"));
+      at(2000, function () { hero.classList.add("s-lede", "s-settle"); html.classList.add("shine"); });
+      at(2150, beat("s-btn"));
+      var failsafe = setTimeout(finish, 3400);
+      timers.push(failsafe);
+      at(2600, function () {
+        clearTimeout(failsafe);
+        done = true;
+        html.classList.remove("cue");
+        html.classList.add("no-cue");
+        remember();
+        unlisten();
+      });
+      at(3300, retireShine);      /* the 1200ms pass started at 2000 has finished */
+    });
+    at(4200, finish);             /* only for a fonts promise that never settles */
+  }
+
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var seen = false;
+  try { seen = !!sessionStorage.getItem("bc_cue"); } catch (e) {}
+  if (!reduce && !seen && (location.hash === "" || location.hash === "#/") && hero) {
+    html.classList.add("cue");
+    runCue();
+  } else {
+    html.classList.add("no-cue");
+  }
+
+  /* ---------- scroll cues: additive only, once each, over content already readable ---------- */
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("on"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.25 });
+    Array.prototype.forEach.call(document.querySelectorAll(".act,.offerings .numeral,.curtain,.rooms,.stat-num"), function (el) { io.observe(el); });
+    if (hero) {
+      var ho = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { hero.classList.toggle("off", !e.isIntersecting); });
+      }, { threshold: 0 });
+      ho.observe(hero);
+    }
+  } else {
+    Array.prototype.forEach.call(document.querySelectorAll(".act,.offerings .numeral,.curtain,.rooms,.stat-num"), function (el) { el.classList.add("on"); });
+  }
+  /* the numeral and 2,500 sheens are gated by .on; once a pass has played the class retires, so
+     re-showing #page-home (display:none restarts CSS animations) cannot replay it. On these two
+     elements .on drives nothing but the sheen, and its end state is the plain leaf. */
+  document.addEventListener("animationend", function (e) {
+    if (e.animationName !== "sheen" || !e.target.classList || !e.target.classList.contains("leaf-text")) return;
+    var host = e.target.closest ? e.target.closest(".numeral,.stat-num") : null;
+    if (host) host.classList.remove("on");
+  });
+
   /* Organizations taken from her own KPI document. Individual client names are
-     deliberately excluded. */
+     deliberately excluded. The list is also inline in the HTML; this only fills
+     it if the markup arrived empty. */
   var ROOMS = [
     "NYU Stern Executive Education",
     "NYU Stern Office of Sustainability",
@@ -687,11 +1194,13 @@ form.enquiry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px
   ];
 
   var list = document.getElementById("roomList");
-  ROOMS.forEach(function (name) {
-    var li = document.createElement("li");
-    li.textContent = name;
-    list.appendChild(li);
-  });
+  if (list && !list.children.length) {
+    ROOMS.forEach(function (name) {
+      var li = document.createElement("li");
+      li.textContent = name;
+      list.appendChild(li);
+    });
+  }
 
   var ROUTES = { "#/": "home", "#/about": "about", "#/connect": "connect" };
   var TITLES = {
