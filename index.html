@@ -269,7 +269,7 @@ html.no-cue .house{display:none}
 /* desktop: a square box. Width and height stop being coupled 4:5, so the composite can fill the fold's width without the apron dropping below it; her frame reads at .58, closer to the photograph's own .71. */
 @media (min-width:901px){.bridge{aspect-ratio:1/1}}
 .bridge .frame{position:absolute;left:25.625%;top:3%;width:48.75%;height:84%;z-index:1}
-.wing{position:absolute;bottom:3%;width:40.9375%;height:26%;padding:1px;z-index:2}
+.wing{position:absolute;bottom:3%;width:37.5%;height:26%;padding:1px;z-index:2}
 .wing img{width:100%;height:100%;object-fit:cover;filter:contrast(1.04) saturate(1.04)}
 .wing.left{left:0;background:var(--leaf);box-shadow:0 0 28px rgba(201,162,39,.22)}
 .wing.right{right:0;background:var(--aqua-live);box-shadow:0 0 28px rgba(61,224,204,.30)}
@@ -419,6 +419,7 @@ html.cue-skip body,html.cue-skip .masthead,html.cue-skip .hero,html.cue-skip .he
 .offering h3{font-size:clamp(1.625rem,2.35vw,1.875rem);line-height:1.1;color:#FFFFFF}
 .offering p{font-size:clamp(16px,1.2vw,17px);line-height:1.7}
 .offering .stat{display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap;border-top:1px solid rgba(61,224,204,.45);padding-top:14px;margin-top:6px}
+.offering .slogan{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(16px,1.3vw,18px);line-height:1.35;color:var(--gold-light);font-variation-settings:"opsz" 18;text-wrap:pretty}
 .stat-num{font-family:var(--display);font-weight:500;font-size:clamp(3rem,5.6vw,4.5rem);line-height:1;letter-spacing:-.01em;font-variation-settings:"opsz" 96}
 
 /* ---------- Act III: selected rooms, the lacquer slab (black as accent) ---------- */
@@ -534,6 +535,9 @@ html.cue-skip body,html.cue-skip .masthead,html.cue-skip .hero,html.cue-skip .he
   font-family:var(--display);font-style:italic;font-weight:400;font-variation-settings:"opsz" 96;
   font-size:clamp(2.75rem,9.7vw,7.75rem);line-height:1.02;letter-spacing:-.02em;color:#FFFFFF;
 }
+.quote .attrib{display:flex;flex-direction:column;align-items:center;gap:8px;margin:0;text-align:center}
+.quote .attrib .who{font-family:var(--display);font-variation-settings:"opsz" 6;font-size:clamp(12px,1vw,13px);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light)}
+.quote .attrib .role{font-size:14px;letter-spacing:.06em;color:var(--cream-dim)}
 .quote blockquote .mark.close{color:var(--aqua-light);text-shadow:0 0 24px rgba(61,224,204,.35)}
 
 /* ---------- Connect, Act II: form and aside ---------- */
@@ -688,7 +692,7 @@ form.enquiry::before,.thanks::before{content:"";position:absolute;left:0;right:0
   .field textarea{min-height:180px}
   .bridge{aspect-ratio:35/48;max-width:none}
   .bridge .frame{left:22%;top:2.917%;width:56%;height:83.333%;padding:9px}
-  .wing{width:45.714%;height:25.417%;bottom:4.167%}
+  .wing{width:38.5%;height:25.417%;bottom:4.167%}
   .wing-label{display:none}
   .foots{height:4.167%;padding-inline:2%}
   .foots .bulb:nth-child(1),.foots .bulb:nth-child(2),.foots .bulb:nth-child(10),.foots .bulb:nth-child(11){display:none}
@@ -828,6 +832,7 @@ form.enquiry::before,.thanks::before{content:"";position:absolute;left:0;right:0
           <h3>From the stage</h3>
           <p>As a keynote speaker I provide concepts and clear-cut methods on achieving success, sharing personal stories, insights and calls to action with audiences across business, the arts, not-for-profit and sport.</p>
           <p class="stat"><span class="stat-cap">Over</span> <span class="stat-num stamp"><span class="leaf-text">2,500</span></span> <span class="stat-cap">in one room</span></p>
+          <p class="slogan">&ldquo;Everything You Need You Already Have, and Everything You Have Is Good Enough<span class="tm">&trade;</span>&rdquo;</p>
         </article>
       </div>
     </section>
@@ -930,11 +935,11 @@ form.enquiry::before,.thanks::before{content:"";position:absolute;left:0;right:0
         <article class="stage broadway">
           <div class="shot"><img src="assets/theatre-curtain.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="A theatre auditorium with the red curtain closed"></div>
           <h3>On Broadway</h3>
-          <p>Award winning performer, dance captain and fight captain, with credits including The Gershwins&rsquo; Porgy and Bess, Motown the Musical and The Lion King.</p>
+          <p>Award winning performer, dance captain and fight captain, with credits including The Gershwins&rsquo; Porgy and Bess, Motown: The Musical and The Lion King.</p>
         </article>
         <article class="stage room">
           <div class="shot"><img src="assets/boardroom.jpg" width="728" height="408" loading="lazy" decoding="async" alt="A boardroom with tall windows, natural light and plants"></div>
-          <h3>In the classroom</h3>
+          <h3>In the room</h3>
           <p>Adjunct Assistant Professor of Management Communication at NYU Stern, and a facilitator for Executive Education participants and MBA candidates.</p>
         </article>
       </div>
@@ -966,6 +971,7 @@ form.enquiry::before,.thanks::before{content:"";position:absolute;left:0;right:0
     <section class="quote wrap">
       <div class="diamond-rule" aria-hidden="true"><span class="line"></span><span class="d"></span><span class="line"></span></div>
       <blockquote><span class="mark stamp"><span class="leaf-text">&ldquo;</span></span>Lisa Nicole is an experience.<span class="mark close">&rdquo;</span></blockquote>
+      <p class="attrib"><span class="who">Shauntay Dunbar Williams</span><span class="role">Event Producer and Author</span></p>
       <div class="diamond-rule" aria-hidden="true"><span class="line"></span><span class="d"></span><span class="line"></span></div>
     </section>
 
