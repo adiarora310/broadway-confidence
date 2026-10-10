@@ -141,6 +141,7 @@ html.no-cue .house{display:none}
   font-size:clamp(11px,1vw,12px);font-weight:700;letter-spacing:.18em;line-height:1;
   text-transform:uppercase;color:var(--aqua);
 }
+.act span,.eyebrow{font-size:clamp(13px,1.1vw,14px)}
 /* the Act dividers are real h2s (outline: h1, Act h2, h3s); the h2 box itself contributes nothing visually */
 .act{display:flex;align-items:baseline;gap:20px;font-size:inherit;font-weight:400;text-wrap:wrap}
 .act .line{flex:1;position:relative;height:1px}
@@ -535,10 +536,14 @@ html.cue-skip body,html.cue-skip .masthead,html.cue-skip .hero,html.cue-skip .he
   font-family:var(--display);font-style:italic;font-weight:400;font-variation-settings:"opsz" 96;
   font-size:clamp(2.75rem,9.7vw,7.75rem);line-height:1.02;letter-spacing:-.02em;color:#FFFFFF;
 }
-.quote .attrib{display:flex;flex-direction:column;align-items:center;gap:8px;margin:0;text-align:center}
-.quote .attrib .who{font-family:var(--display);font-variation-settings:"opsz" 6;font-size:clamp(12px,1vw,13px);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light)}
-.quote .attrib .role{font-size:14px;letter-spacing:.06em;color:var(--cream-dim)}
-.quote blockquote .mark.close{color:var(--aqua-light);text-shadow:0 0 24px rgba(61,224,204,.35)}
+.attrib{display:flex;flex-direction:column;align-items:center;gap:8px;margin:0;text-align:center}
+.attrib .who{font-family:var(--display);font-variation-settings:"opsz" 6;font-size:clamp(12px,1vw,13px);font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light)}
+.attrib .role{font-size:14px;letter-spacing:.06em;color:var(--cream-dim)}
+blockquote .mark.close{color:var(--aqua-light);text-shadow:0 0 24px rgba(61,224,204,.35)}
+/* a single testimonial between acts: Bodoni italic at a reading size, gold open mark, aqua close */
+.testimony{padding-block:0 clamp(64px,10vw,140px);display:flex;flex-direction:column;align-items:center;gap:clamp(24px,3vw,40px);text-align:center}
+.testimony blockquote{margin:0;max-width:960px;font-family:var(--display);font-style:italic;font-weight:400;font-variation-settings:"opsz" 48;font-size:clamp(1.5rem,2.6vw,2.25rem);line-height:1.25;letter-spacing:-.01em;color:#FFFFFF;text-wrap:balance}
+.testimony blockquote .mark.open{color:var(--gold)}
 
 /* ---------- Connect, Act II: form and aside ---------- */
 .connect{
@@ -813,28 +818,34 @@ form.enquiry::before,.thanks::before{content:"";position:absolute;left:0;right:0
       <div class="grid">
         <article class="offering">
           <div class="numeral stamp" aria-hidden="true"><span class="leaf-text">i.</span></div>
-          <h3>For business leaders</h3>
+          <h3>For Business Leaders</h3>
           <p>I support business leaders in becoming more strategic, self-aware and confident communicators using &ldquo;Broadway Basics<span class="tm">&trade;</span>&rdquo; to strengthen their leadership presence.</p>
         </article>
         <article class="offering">
           <div class="numeral stamp" aria-hidden="true"><span class="leaf-text">ii.</span></div>
-          <h3>For artists</h3>
+          <h3>For Artists</h3>
           <p>I support aspiring and established artists in understanding what &ldquo;being&rdquo; a business is specific to the performing arts industry, and how to navigate it effectively.</p>
         </article>
         <article class="offering">
           <div class="numeral stamp" aria-hidden="true"><span class="leaf-text">iii.</span></div>
-          <h3>In the room</h3>
+          <h3>For Teams</h3>
           <p>I provide targeted, interactive (and fun!) experiences for business leaders to learn and immediately apply strategies.</p>
         </article>
         <!-- Fourth offering drawn from her own media kit, person shifted to match the others. Pending her approval. -->
         <article class="offering">
           <div class="numeral" aria-hidden="true">iv.</div>
-          <h3>From the stage</h3>
+          <h3>From the Stage</h3>
           <p>As a keynote speaker I provide concepts and clear-cut methods on achieving success, sharing personal stories, insights and calls to action with audiences across business, the arts, not-for-profit and sport.</p>
           <p class="stat"><span class="stat-cap">Over</span> <span class="stat-num stamp"><span class="leaf-text">2,500</span></span> <span class="stat-cap">in one room</span></p>
           <p class="slogan">&ldquo;Everything You Need You Already Have, and Everything You Have Is Good Enough<span class="tm">&trade;</span>&rdquo;</p>
         </article>
       </div>
+    </section>
+
+    <section class="testimony wrap">
+      <div class="diamond-rule" aria-hidden="true"><span class="line"></span><span class="d"></span><span class="line"></span></div>
+      <blockquote><span class="mark open">&ldquo;</span>Lisa&rsquo;s Broadway Confidence session was an absolute game-changer. Her unique blend of expertise and charisma made the workshop not only informative but also truly engaging. Lisa&rsquo;s ability to create a dynamic and interactive experience left everyone feeling inspired and empowered.<span class="mark close">&rdquo;</span></blockquote>
+      <p class="attrib"><span class="who">Marie-Rose Nduku</span><span class="role">NYU Stern School of Business Executive Director</span></p>
     </section>
 
     <section class="rooms">
@@ -845,23 +856,23 @@ form.enquiry::before,.thanks::before{content:"";position:absolute;left:0;right:0
         </div>
         <ul id="roomList">
           <li>NYU Stern Executive Education</li>
-          <li>NYU Stern Office of Sustainability</li>
-          <li>NYU Stern BALA</li>
-          <li>Northwestern IMC</li>
-          <li>The Wharton School</li>
-          <li>Columbia SIPA</li>
+          <li>NYU Office of Sustainability</li>
+          <li>NYU Stern Leadership Accelerator</li>
+          <li>Northwestern University IMC</li>
+          <li>The Wharton School @ UPenn</li>
+          <li>Columbia University SIPA</li>
+          <li>Downing Capital Group</li>
+          <li>Holistic Index</li>
+          <li>Howard University</li>
           <li>Council for Urban Professionals</li>
           <li>Tokio Marine North America</li>
           <li>Convergent</li>
-          <li>Downing Capital Group</li>
-          <li>Holistic Index</li>
           <li>Broadway Inspirational Voices</li>
-          <li>The Performing Arts Project</li>
-          <li>Ekhaya Multi Arts Center, Durban</li>
           <li>Broadway in South Africa</li>
+          <li>Ekhaya Multi Arts Center, Durban</li>
+          <li>The Performing Arts Project</li>
           <li>Opportunity Nation at the Apollo Theater</li>
           <li>Horizons for Homeless Children</li>
-          <li>Howard University</li>
         </ul>
       </div>
     </section>
@@ -915,7 +926,7 @@ form.enquiry::before,.thanks::before{content:"";position:absolute;left:0;right:0
           <p class="lead">From corporate America to the arts to academia, Lisa Nicole Wilkerson has excelled in the storytelling industry at the highest levels. She is an award-winning Broadway actor, voiceover artist on an Emmy-nominated series, professor, speaker, and communication skills leadership and acting career coach. She bundled her extensive experience to found Broadway Confidence<span class="reg">&reg;</span> Coaching &amp; Consulting, a service that integrates executive communication strategies with “Broadway basics<span class="tm">&trade;</span>”, performing arts tools and tactics, to support leaders with enhancing their professional presence.</p>
           <div class="bio-more" id="bioMore" hidden>
             <p>As a New York University Stern School of Business adjunct professor, Lisa coaches Executive Education participants, teaches strategic communication skills to MBAs and undergraduates, and serves as an actor-communication skills coach for EMBAs and MBAs in the Leadership Accelerator program.</p>
-            <p>Other schools that have sought Lisa’s expertise include Columbia University’s School of International and Public Affairs, The Wharton School of Business at University of Pennsylvania, and Northwestern University's Medill School of Journalism, her alma mater.</p>
+            <p>Other schools that have sought Lisa’s expertise include Columbia University’s School of International and Public Affairs, The Wharton School of Business at University of Pennsylvania, Howard University, and Northwestern University's Medill School of Journalism, her alma mater.</p>
             <p>Lisa’s clients span journalism, law, medicine, business, and the arts, and select corporate clients include Downing Capital Group, Holistic Index, Tokio Marine North America Services, and Council for Urban Professionals (CUP).</p>
             <p>Lisa’s speaking philosophy centers on her signature slogan: “Everything You Need You Already Have, and Everything You Have Is Good Enough<span class="tm">&trade;</span>.” She shares actionable methods and personal stories to inspire professionals and youth across business, the arts, sports, and not-for-profits, with a mission to empower and motivate.</p>
             <p>Prior to academia, Lisa worked in consumer marketing PR at Burson-Marsteller. While performing on Broadway, she co-founded Broadway in South Africa, a not-for-profit that fostered cross-cultural exchange between South African youth and Broadway artists using their talents for change.</p>
@@ -939,10 +950,16 @@ form.enquiry::before,.thanks::before{content:"";position:absolute;left:0;right:0
         </article>
         <article class="stage room">
           <div class="shot"><img src="assets/boardroom.jpg" width="728" height="408" loading="lazy" decoding="async" alt="A boardroom with tall windows, natural light and plants"></div>
-          <h3>In the room</h3>
+          <h3>In the Room</h3>
           <p>Adjunct Assistant Professor of Management Communication at NYU Stern, and a facilitator for Executive Education participants and MBA candidates.</p>
         </article>
       </div>
+    </section>
+
+    <section class="testimony wrap">
+      <div class="diamond-rule" aria-hidden="true"><span class="line"></span><span class="d"></span><span class="line"></span></div>
+      <blockquote><span class="mark open">&ldquo;</span>Lisa has a gift of telling stories that connect her with her audience. She is inspiring, articulate, and confident. She has experienced heartache and success, and articulates her journey in an engaging, interactive way.<span class="mark close">&rdquo;</span></blockquote>
+      <p class="attrib"><span class="who">Elizabeth Bryant</span><span class="role">Former SVP People, Learning &amp; Development, Southwest Airlines</span></p>
     </section>
 
     <section class="watch wrap">
@@ -1184,23 +1201,23 @@ form.enquiry::before,.thanks::before{content:"";position:absolute;left:0;right:0
      it if the markup arrived empty. */
   var ROOMS = [
     "NYU Stern Executive Education",
-    "NYU Stern Office of Sustainability",
-    "NYU Stern BALA",
-    "Northwestern IMC",
-    "The Wharton School",
-    "Columbia SIPA",
+    "NYU Office of Sustainability",
+    "NYU Stern Leadership Accelerator",
+    "Northwestern University IMC",
+    "The Wharton School @ UPenn",
+    "Columbia University SIPA",
+    "Downing Capital Group",
+    "Holistic Index",
+    "Howard University",
     "Council for Urban Professionals",
     "Tokio Marine North America",
     "Convergent",
-    "Downing Capital Group",
-    "Holistic Index",
     "Broadway Inspirational Voices",
-    "The Performing Arts Project",
-    "Ekhaya Multi Arts Center, Durban",
     "Broadway in South Africa",
+    "Ekhaya Multi Arts Center, Durban",
+    "The Performing Arts Project",
     "Opportunity Nation at the Apollo Theater",
-    "Horizons for Homeless Children",
-    "Howard University"
+    "Horizons for Homeless Children"
   ];
 
   var list = document.getElementById("roomList");
